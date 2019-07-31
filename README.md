@@ -431,10 +431,12 @@ try {
 
 # Demo
 ## Sample Code with integrated
+### Using NativeBase KitchenSink v2.12.0
 
 iOS | Android
  :-----:| :-----:
- ![ios-demo](https://github.com/ibm-watson-cxa/CXA_react_native_module/raw/master/Example/NativeBase-KitchenSink/screenshots/iOS.gif) | ![android-demo](https://github.com/ibm-watson-cxa/CXA_react_native_module/raw/master/Example/NativeBase-KitchenSink/screenshots/Android.gif)
+ ![ios-demo](https://github.com/ibm-watson-cxa/ea_react_native_module/raw/master/Example/NativeBase-KitchenSink/screenshots/iOS.gif) | ![android-demo](https://github.com/ibm-watson-cxa/ea_react_native_module/raw/master/Example/NativeBase-KitchenSink/screenshots/Android.gif)
+
 
 * NativeBase-KitchenSink taken from https://github.com/GeekyAnts/NativeBase-KitchenSink which is at react-native-wcxa/Example/NativeBase-KitchenSink. Documentation is at https://github.com/ibm-watson-cxa/CXA_react_native_module/tree/master/Example/NativeBase-KitchenSink.
 
