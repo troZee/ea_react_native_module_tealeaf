@@ -438,15 +438,31 @@ iOS | Android
  ![ios-demo](https://github.com/ibm-watson-cxa/ea_react_native_module/raw/master/Example/NativeBase-KitchenSink/screenshots/iOS.gif) | ![android-demo](https://github.com/ibm-watson-cxa/ea_react_native_module/raw/master/Example/NativeBase-KitchenSink/screenshots/Android.gif)
 
 
-* NativeBase-KitchenSink taken from https://github.com/GeekyAnts/NativeBase-KitchenSink which is at react-native-wcxa/Example/NativeBase-KitchenSink. Documentation is at https://github.com/ibm-watson-cxa/CXA_react_native_module/tree/master/Example/NativeBase-KitchenSink.
+* NativeBase-KitchenSink taken from https://github.com/GeekyAnts/NativeBase-KitchenSink which is at react-native-wcxa/Example/NativeBase-KitchenSink. Documentation is at https://github.com/ibm-watson-cxa/ea_react_native_module/tree/master/Example/NativeBase-KitchenSink.
 
 ## Installation instructions
 
 #### In command line window
 ```javascript
-cd ../CXA_react_native_module-master/Example/NativeBase-KitchenSink
-yarn install
+cd ../ea_react_native_module-master/Example/NativeBase-KitchenSink
+yarn
+react-native link react-native-vector-icons
 ```
+
+*	**Run on iOS**
+	*	Opt #1:
+		*	Open the project in Xcode from `ios/NativeBase-KitchenSink.xcodeproj`
+		*	Click `run` button to simulate
+	*	Opt #2:
+		*	Run `react-native run-ios` in your terminal
+
+
+*	**Run on Android**
+	*	Make sure you have an `Android emulator` installed and running
+	*	Run `react-native run-android` in your terminal
+
+
+## Notes
 
 There are several know issues between npm install versus yarn install. Since yarn is a Facebook tool. It normally has fixes patched for installing dependancies. 
 
