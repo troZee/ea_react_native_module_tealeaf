@@ -1,0 +1,24 @@
+{
+    "AutoLayout": {
+        "MyViewControllerExample": {
+            "do": false,
+            "screenViewName": "MyScreenViewName",
+            "delay": 500,
+            "takeScreenShot": false,
+            "isWebView": false,
+            "numberOfWebviews": 0,
+            "CaptureScreenContents": false
+        }
+    },
+    "AppendMapIds": {
+        "[w,9290],[v,0]": {
+            "mid": "ASimpleUIView"
+        },
+        "tag2999999": {
+            "mid": "giveAdditionalId1"
+        },
+        "idxPathValue": {
+            "mid": "giveAdditionalId2"
+        }
+    }
+}

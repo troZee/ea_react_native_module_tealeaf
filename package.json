@@ -1,0 +1,27 @@
+{
+  "name": "react-native-acoustic-ea",
+  "version": "8.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native",
+    "ios",
+    "android",
+    "tealeaf",
+    "cxa",
+    "wxca"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ibm-watson-cxa/ea_react_native_module.git"
+  },
+  "author": "Omar Hernandez and Chang Jie Yang",
+  "license": "See license in https://github.com/ibm-watson-cxa/CXA_react_native_module/tree/master/Licenses",
+  "homepage": "https://github.com/ibm-watson-cxa/CXA_react_native_module",
+  "peerDependencies": {
+    "react-native": "^0.52.0"
+  }
+}

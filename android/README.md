@@ -1,0 +1,1 @@
+# This Android Studio project contains Tealeaf Android SDK module.

@@ -1,0 +1,176 @@
+install! 'cocoapods', :deterministic_uuids => false
+# Uncomment the next line to define a global platform for your project
+platform :ios, '9.0'
+
+# React Native requirements
+puts "Remove node_modules"
+output = `rm -rf ../node_modules/`
+puts output
+output = `rm -rf node_modules/`
+puts output
+
+# puts "Remove yarn.lock"
+# output = `rm yarn.lock`
+# puts output
+
+# puts "Install yarn tool"
+# output = `brew install yarn`
+# puts output
+
+# puts "Install react native directory and sources"
+# output = `yarn install`
+# puts output
+
+# puts "Install react native directory and sources"
+# output = `npm install`
+# puts output
+
+# target 'RNCxaStandaloneDebug' do
+#   project 'RNCxa.xcodeproj'
+#   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+#   use_frameworks!
+
+#   #pod 'IBMTealeafReactNativeDebug'
+  
+#   react_native_path = "node_modules/react-native"
+  
+#   # Explicitly include Yoga if you are using RN >= 0.42.0
+#   pod "yoga", :path => "#{react_native_path}/ReactCommon/yoga"
+#   # Third party deps podspec link
+#   pod 'DoubleConversion', :podspec => "#{react_native_path}/third-party-podspecs/DoubleConversion.podspec"
+#   pod 'glog', :podspec => "#{react_native_path}/third-party-podspecs/glog.podspec"
+#   pod 'Folly', :podspec => "#{react_native_path}/third-party-podspecs/Folly.podspec"
+  
+#   # Pods for ReactNative
+#   pod 'React', :path => react_native_path, :subspecs => [
+#   'Core',
+#   'CxxBridge', # Include this for RN >= 0.47
+#   'DevSupport', # Include this to enable In-App Devmenu if RN >= 0.43
+#   'RCTText',
+#   'RCTNetwork',
+#   'RCTWebSocket', # Needed for debugging
+#   'RCTAnimation', # Needed for FlatList and animations running on native UI thread
+#   ]
+# end
+
+# https://github.com/facebook/react-native/issues/17893
+# When using RN in combination with Cocoapods, a lot of 
+# things are broken. These are the fixes we had to append 
+# to our Podfile when upgrading to ReactNative@0.55.3.
+# 
+# WARNING: Check those line numbers when you're on a different version!
+# def change_lines_in_file(file_path, &change)
+#   print "Fixing #{file_path}...\n"
+
+#   contents = []
+
+#   file = File.open(file_path, 'r')
+#   file.each_line do | line |
+#     contents << line
+#   end
+#   file.close
+
+#   File.open(file_path, 'w') do |f|
+#     f.puts(change.call(contents))
+#   end
+# end
+
+# Fixed architectures
+# post_install do |installer|
+#   # Get all the targets from the project
+#   files = Dir.glob("*.xcodeproj")
+#   puts "project files >> #{files}"
+#   # Normally only 1 project, so use the first
+#   proj_file = files[0]
+
+#   app_project = Xcodeproj::Project.open(proj_file);
+#   app_project.native_targets.each do |target|
+#     #puts 'project target: ' + target.inspect
+#     puts "project target: #{target}"
+
+#     target.build_configurations.each do |config|
+#       config.build_settings['ARCHS'] = '$(ARCHS_STANDARD) armv7s';
+#       config.build_settings['VALID_ARCHS'] = "arm64 armv7 armv7s x86_64 i386";
+#       config.build_settings['ONLY_ACTIVE_ARCH'] = "NO";
+#     end
+
+#     if target.name == 'RNCxaStandaloneDebug'
+#       target.build_configurations.each do |config|
+#         config.build_settings['ARCHS'] = '$(ARCHS_STANDARD) armv7s';
+#         config.build_settings['VALID_ARCHS'] = "arm64 armv7 armv7s x86_64 i386";
+#         config.build_settings['ONLY_ACTIVE_ARCH'] = "NO";
+#         config.build_settings['OTHER_LDFLAGS'] = '$(inherited)'
+#         config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] = '$(inherited)'
+#       end
+#     end
+#   end
+
+#   installer.pods_project.targets.each do |target|
+#     puts "Target: #{target.name}"
+#     target.build_configurations.each do |config|
+#       config.build_settings['ARCHS'] = '$(ARCHS_STANDARD) armv7s';
+#       config.build_settings['VALID_ARCHS'] = "arm64 armv7 armv7s x86_64 i386";
+#       config.build_settings['ONLY_ACTIVE_ARCH'] = "NO";
+#     end
+
+#     if target.name == 'yoga'
+#       target.build_configurations.each do |config|
+#           config.build_settings['GCC_TREAT_WARNINGS_AS_ERRORS'] = 'NO'
+#           config.build_settings['GCC_WARN_64_TO_32_BIT_CONVERSION'] = 'NO'
+#       end
+#     end
+#     if target.name == 'glog'
+#       target.build_configurations.each do |config|
+#           config.build_settings['GCC_TREAT_WARNINGS_AS_ERRORS'] = 'NO'
+#           config.build_settings['GCC_WARN_64_TO_32_BIT_CONVERSION'] = 'NO'
+#       end
+#     end
+#     if target.name == 'RNCxaStandaloneDebug'
+#       target.build_configurations.each do |config|
+#         config.build_settings['ARCHS'] = '$(ARCHS_STANDARD) armv7s';
+#         config.build_settings['VALID_ARCHS'] = "arm64 armv7 armv7s x86_64 i386";
+#         config.build_settings['ONLY_ACTIVE_ARCH'] = "NO";
+#         config.build_settings['OTHER_LDFLAGS'] = '$(inherited)'
+#         config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] = '$(inherited)'
+#       end
+#     end
+#   end
+
+#   #Do same on pod project target
+#   installer.pods_project.build_configuration_list.build_configurations.each do |config|
+#     config.build_settings['VALID_ARCHS'] = "arm64 armv7 armv7s x86_64 i386";
+#   end
+
+#   # https://github.com/facebook/yoga/issues/711#issuecomment-381098373
+#   change_lines_in_file('./Pods/Target Support Files/yoga/yoga-umbrella.h') do |lines|
+#     lines.reject do | line |
+#       [
+#         '#import "Utils.h"',
+#         '#import "YGLayout.h"',
+#         '#import "YGNode.h"',
+#         '#import "YGNodePrint.h"',
+#         '#import "YGStyle.h"',
+#         '#import "Yoga-internal.h"',
+#       ].include?(line.strip)
+#     end
+#   end
+
+#   # https://github.com/facebook/yoga/issues/711#issuecomment-374605785
+#   change_lines_in_file('./node_modules/react-native/React/Base/Surface/SurfaceHostingView/RCTSurfaceSizeMeasureMode.h') do |lines|
+#     unless lines[27].include?("#ifdef __cplusplus")
+#       lines.insert(27, "#ifdef __cplusplus")
+#       lines.insert(34, "#endif")
+#     end
+#     lines
+#   end
+
+#   # https://github.com/facebook/react-native/issues/13198
+#   change_lines_in_file('./node_modules/react-native/Libraries/NativeAnimation/RCTNativeAnimatedNodesManager.h') do |lines|
+#     lines.map { |line| line.include?("#import <RCTAnimation/RCTValueAnimatedNode.h>") ? '#import "RCTValueAnimatedNode.h"' : line }
+#   end
+
+#   # https://github.com/facebook/react-native/issues/16039
+#   change_lines_in_file('./node_modules/react-native/Libraries/WebSocket/RCTReconnectingWebSocket.m') do |lines|
+#     lines.map { |line| line.include?("#import <fishhook/fishhook.h>") ? '#import "fishhook.h"' : line }
+#   end
+# end
