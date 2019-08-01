@@ -1,6 +1,6 @@
 //
 //  Licensed Materials - Property of IBM
-//  (C) Copyright IBM Corp. 2018
+//  (C) Copyright IBM Corp. 2019
 //  US Government Users Restricted Rights - Use, duplication or disclosure
 //  restricted by GSA ADP Schedule Contract with IBM Corp.
 //
@@ -109,31 +109,6 @@
 #pragma mark - Network Logging
 /*!
  @brief Requests that the framework logs the connection information.
- @param connection - The NSURLSession object
- @param error - An NSError object
- @return BOOL If the event was successfully logged or not.
- */
--(BOOL)logConnection:(id)connection error:(NSError*)error;
-
-/*!
- @brief Requests that the framework logs the connection information.
- @param connection - The NSURLSession object
- @param response - The NSURLResponse object from the connection request
- @param responseTime - The time in milliseconds taken by the server to respond
- @return BOOL If the event was successfully logged or not.
- */
--(BOOL)logConnection:(id)connection response:(NSURLResponse*)response responseTimeInMilliseconds:(long long)responseTime;
-
-/*!
- @brief Requests that the framework logs the connection information.
- @param connection - The NSURLSession object
- @param request - The NSURLRequest object associated with the connection
- @return BOOL If the event was successfully logged or not.
- */
--(BOOL)logConnection:(id)connection request:(NSURLRequest*)request;
-
-/*!
- @brief Requests that the framework logs the connection information.
  @param urlSession - The NSURLSession object
  @param error - any NSError object
  @return BOOL If the event was successfully logged or not.
@@ -233,20 +208,6 @@
  @return if the event was successfully logged or not.
  */
 - (BOOL)logPrintScreenEvent;
-
-/**
-Requests that the framework logs an Image.
-@param image - The UIImage to be logged.
-@return if the event was successfully logged or not.
-*/
-- (BOOL)logImage:(UIImage *)image;
-
-/**
- Requests that the framework logs an Image.
- @param image - The UIImage to be logged.
- @return if the event was successfully logged or not.
- */
-- (BOOL)logImageSynchronous:(UIImage*)image; __attribute((deprecated("This item is no longer being supported. Please fill a support request if needed.")));
 
 /**
  Requests that the framework logs the layout of the screen

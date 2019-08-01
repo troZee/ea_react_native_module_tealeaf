@@ -1,17 +1,17 @@
 
-# react-native-wcxa
+# react-native-acoustic-ea
 
 ## Getting started
 
 This will add it to your package.json file:
 
-`$ npm install --save react-native-wcxa`
+`$ npm install --save react-native-acoustic-ea`
 
 ### Manual installation
 
 This will add it to your iOS Xcode project and Android Studio project:
 
-`$ react-native link react-native-wcxa`
+`$ react-native link react-native-acoustic-ea`
 
 To upgrade node_modules and get latest call:
 
@@ -20,26 +20,26 @@ To upgrade node_modules and get latest call:
 ---
 ### iOS
 
-You might have issues with `react-native link react-native-wcxa` on iOS. You will need to link **react-native-wcxa** by dragging from **/node_modules/react-native-wcxa/ios/RNCxa.xcodeproj** to **xCode libraries location**.
+You might have issues with `react-native link react-native-acoustic-ea` on iOS. You will need to link **react-native-acoustic-ea** by dragging from **/node_modules/react-native-acoustic-ea/ios/RNCxa.xcodeproj** to **xCode libraries location**.
 
-![](https://github.com/ibm-watson-cxa/CXA_react_native_module/raw/master/screenshots/move_RNCxa_project.png)
+![](https://github.com/ibm-watson-cxa/ea_react_native_module/raw/master/screenshots/move_RNCxa_project.png)
 
 
-You will need find the **static libraries** and **resource bundles** that can be found at */node_modules/react-native-wcxa/ios/Tealeaf*.
+You will need find the **static libraries** and **resource bundles** that can be found at */node_modules/react-native-acoustic-ea/ios/Tealeaf*.
 
-![](https://github.com/ibm-watson-cxa/CXA_react_native_module/raw/master/screenshots/find_libraries_resources.png)
+![](https://github.com/ibm-watson-cxa/ea_react_native_module/raw/master/screenshots/find_libraries_resources.png)
 
-Copy **static libraries** and **resource bundles** to your react native application to have access to them for the build. In this example, it is **NativebaseKitchenSink**. **<span style="color:blue">This is a new folder in your project. Do not link the one in the */node_modules/react-native-wcxa/ios/Tealeaf* otherwise, you will have link issues of not finding items.**</span>
+Copy **static libraries** and **resource bundles** to your react native application to have access to them for the build. In this example, it is **NativebaseKitchenSink**. **<span style="color:blue">This is a new folder in your project. Do not link the one in the */node_modules/react-native-acoustic-ea/ios/Tealeaf* otherwise, you will have link issues of not finding items.**</span>
 
-![](https://github.com/ibm-watson-cxa/CXA_react_native_module/raw/master/screenshots/add_libraries_resources.png)
+![](https://github.com/ibm-watson-cxa/ea_react_native_module/raw/master/screenshots/add_libraries_resources.png)
 
 Link the following libraries: **WebKit.framework** from Apple, **EOCore.framework** and **TealeafReactNative.framework** from **/Your Project/Tealeaf** into application. Also review that **libRNCxa.a** is also linked.
 
-![](https://github.com/ibm-watson-cxa/CXA_react_native_module/raw/master/screenshots/link_libraries.png)
+![](https://github.com/ibm-watson-cxa/ea_react_native_module/raw/master/screenshots/link_libraries.png)
 
 Add **bundle resources** that will need to be copied which are **TLFResources.bundle** and **EOCoreSettings.bundle** from **/Your Project/Tealeaf** into application.
 
-![](https://github.com/ibm-watson-cxa/CXA_react_native_module/raw/master/screenshots/add_resources.png)
+![](https://github.com/ibm-watson-cxa/ea_react_native_module/raw/master/screenshots/add_resources.png)
 
 Add **environmental variables**: 
 * **EODebug** and **TLF_DEBUG** will help debugging. 
@@ -48,11 +48,11 @@ Add **environmental variables**:
 
 Note: **TLF_AUTO_ENABLE** is no longer needed as of version 7.6.0.
 
-![](https://github.com/ibm-watson-cxa/CXA_react_native_module/raw/master/screenshots/add_environment_variables.png)
+![](https://github.com/ibm-watson-cxa/ea_react_native_module/raw/master/screenshots/add_environment_variables.png)
 
 You will also need to open **TealeafBasicConfig.plist** to adjust **AppKey** and **PostMessageUrl**.
 
-![](https://github.com/ibm-watson-cxa/CXA_react_native_module/raw/master/screenshots/adjust_TLFResources_bundle.png)
+![](https://github.com/ibm-watson-cxa/ea_react_native_module/raw/master/screenshots/adjust_TLFResources_bundle.png)
 
 ---
 ### Android
@@ -66,7 +66,7 @@ Tealeaf React-Native Android module is built with Android Studio 3.2.1, and comp
 
 `$ react-native upgrade`
 
-`$ react-native link react-native-wcxa`    
+`$ react-native link react-native-acoustic-ea`    
 
 
 ## Load required Javascript Bundle index.android.bundle under assets folder
@@ -106,7 +106,7 @@ public boolean dispatchTouchEvent(MotionEvent e)
 ```
 You will also need to open **TealeafBasicConfig.properties** to adjust **AppKey** and **PostMessageUrl**.
 
-![](https://github.com/ibm-watson-cxa/CXA_react_native_module/raw/master/screenshots/TealeafBasicConfig_appkey.png)
+![](https://github.com/ibm-watson-cxa/ea_react_native_module/raw/master/screenshots/TealeafBasicConfig_appkey.png)
 
 ## Installation complete, run your app
 `$ react-native run-android`
@@ -136,7 +136,7 @@ const Tealeaf = NativeModules.RNCxa;
 ```
 
 #### Example
-The full example can also be reviewed at https://github.com/ibm-watson-cxa/CXA_react_native_module/blob/master/Example/NativeBase-KitchenSink/src/screens/checkbox/index.js
+The full example can also be reviewed at https://github.com/ibm-watson-cxa/ea_react_native_module/blob/master/Example/NativeBase-KitchenSink/src/screens/checkbox/index.js
 
 ### Log Screen View Name **(Type 2)**
 You will need to the following in order to log loading a new screen view name or unloading a screen view name, which will get captured as a Tealeaf type 2 message object. 
@@ -195,7 +195,7 @@ logClickEvent(nodeHandler)
   </Body>
 </ListItem>
 ```
-The full example can also be reviewed at https://github.com/ibm-watson-cxa/CXA_react_native_module/blob/master/Example/NativeBase-KitchenSink/src/screens/checkbox/index.js
+The full example can also be reviewed at https://github.com/ibm-watson-cxa/ea_react_native_module/blob/master/Example/NativeBase-KitchenSink/src/screens/checkbox/index.js
 
 ### Log Custom Event **(Type 5)**
 You will need to the following in order to log a custom event, which will get captured as a Tealeaf type 5 message object. 
@@ -245,7 +245,7 @@ class Home extends Component {
     Tealeaf.logScreenLayout("Home");
   }
 ```
-The full example can also be reviewed at https://github.com/ibm-watson-cxa/CXA_react_native_module/blob/master/Example/NativeBase-KitchenSink/src/screens/home/index.js
+The full example can also be reviewed at https://github.com/ibm-watson-cxa/ea_react_native_module/blob/master/Example/NativeBase-KitchenSink/src/screens/home/index.js
 
 
 ### Capture Gestures **(Type 11)**
@@ -468,5 +468,5 @@ There are several know issues between npm install versus yarn install. Since yar
 
 You also need to open ../CXA_react_native_module-master/Example/NativeBase-KitchenSink/ios/NativebaseKitchenSink.xcodeproj. Open File->Project Settings.. and change to use Legacy Build System.
 
-![](https://github.com/ibm-watson-cxa/CXA_react_native_module/raw/master/screenshots/xcode_legacybuild.png)
+![](https://github.com/ibm-watson-cxa/ea_react_native_module/raw/master/screenshots/xcode_legacybuild.png)
 
