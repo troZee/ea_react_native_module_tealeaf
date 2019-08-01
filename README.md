@@ -1,7 +1,11 @@
 
 # react-native-acoustic-ea
 
+# Only iOS is supported at this moment
+
 ## Getting started
+
+**This module uses only enhanced replay, if you like to use traditional replay. Use https://www.npmjs.com/package/react-native-wcxa**
 
 This will add it to your package.json file:
 
