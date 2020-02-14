@@ -1,5 +1,5 @@
 
-# react-native-acoustic-ea
+# react-native-acoustic-ea-tealeaf
 
 # Only iOS is supported at this moment
 
@@ -9,13 +9,13 @@
 
 This will add it to your package.json file:
 
-`$ npm install --save react-native-acoustic-ea`
+`$ npm install --save react-native-acoustic-ea-tealeaf`
 
 ### Manual installation
 
 This will add it to your iOS Xcode project and Android Studio project:
 
-`$ react-native link react-native-acoustic-ea`
+`$ react-native link react-native-acoustic-ea-tealeaf`
 
 To upgrade node_modules and get latest call:
 
@@ -24,16 +24,16 @@ To upgrade node_modules and get latest call:
 ---
 ### iOS
 
-You might have issues with `react-native link react-native-acoustic-ea` on iOS. You will need to link **react-native-acoustic-ea** by dragging from **/node_modules/react-native-acoustic-ea/ios/RNCxa.xcodeproj** to **xCode libraries location**.
+You might have issues with `react-native link react-native-acoustic-ea-tealeaf` on iOS. You will need to link **react-native-acoustic-ea-tealeaf** by dragging from **/node_modules/react-native-acoustic-ea-tealeaf/ios/RNCxa.xcodeproj** to **xCode libraries location**.
 
 ![](https://github.com/ibm-watson-cxa/ea_react_native_module/raw/master/screenshots/move_RNCxa_project.png)
 
 
-You will need find the **static libraries** and **resource bundles** that can be found at */node_modules/react-native-acoustic-ea/ios/Tealeaf*.
+You will need find the **static libraries** and **resource bundles** that can be found at */node_modules/react-native-acoustic-ea-tealeaf/ios/Tealeaf*.
 
 ![](https://github.com/ibm-watson-cxa/ea_react_native_module/raw/master/screenshots/find_libraries_resources.png)
 
-Copy **static libraries** and **resource bundles** to your react native application to have access to them for the build. In this example, it is **NativebaseKitchenSink**. **<span style="color:blue">This is a new folder in your project. Do not link the one in the */node_modules/react-native-acoustic-ea/ios/Tealeaf* otherwise, you will have link issues of not finding items.**</span>
+Copy **static libraries** and **resource bundles** to your react native application to have access to them for the build. In this example, it is **NativebaseKitchenSink**. **<span style="color:blue">This is a new folder in your project. Do not link the one in the */node_modules/react-native-acoustic-ea-tealeaf/ios/Tealeaf* otherwise, you will have link issues of not finding items.**</span>
 
 ![](https://github.com/ibm-watson-cxa/ea_react_native_module/raw/master/screenshots/add_libraries_resources.png)
 
@@ -70,7 +70,7 @@ Tealeaf React-Native Android module is built with Android Studio 3.2.1, and comp
 
 `$ react-native upgrade`
 
-`$ react-native link react-native-acoustic-ea`    
+`$ react-native link react-native-acoustic-ea-tealeaf`    
 
 
 ## Load required Javascript Bundle index.android.bundle under assets folder
