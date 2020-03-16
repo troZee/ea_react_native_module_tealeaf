@@ -1,8 +1,12 @@
 //
-//  Licensed Materials - Property of IBM
-//  (C) Copyright IBM Corp. 2019
-//  US Government Users Restricted Rights - Use, duplication or disclosure
-//  restricted by GSA ADP Schedule Contract with IBM Corp.
+// Copyright (C) 2020 Acoustic, L.P. All rights reserved.
+//
+// NOTICE: This file contains material that is confidential and proprietary to
+// Acoustic, L.P. and/or other developers. No license is granted under any intellectual or
+// industrial property rights of Acoustic, L.P. except as may be provided in an agreement with
+// Acoustic, L.P. Any unauthorized copying or distribution of content from this file is
+// prohibited.
+
 //
 
 #import "RNCxa.h"
@@ -32,6 +36,22 @@
 // To export a module named RNCxa
 RCT_EXPORT_MODULE()
 
+-(id)init {
+    if ( self = [super init] ) {
+        // init variables
+        _countViews = [NSNumber numberWithInt:1];
+        _noViews = [NSNumber numberWithInt:0];
+        _start = [NSDate date];
+        _end = _start;
+        _currentPageName = @"batchDidComplete";
+        _work = dispatch_block_create(0, ^{
+                        NSLog(@"batchDidComplete");
+                });
+    }
+    return self;
+}
+
+
 @synthesize bridge = _bridge;
 
 - (dispatch_queue_t)methodQueue {
@@ -42,6 +62,55 @@ RCT_EXPORT_MODULE()
 + (BOOL)requiresMainQueueSetup {
     // To indicate it needs to use UI thread directly.
     return YES;
+//    return NO;
+}
+
+- (void)batchDidComplete {
+        _end = [NSDate date];
+        _noViews = [NSNumber numberWithInt:[_noViews intValue] - 1];
+    
+    NSTimeInterval timeInterval = [_end timeIntervalSinceDate:_start];
+    _totalLayoutTime = [NSNumber numberWithDouble:(_totalLayoutTime.doubleValue + timeInterval)];
+    _countViews = [NSNumber numberWithInt:[_countViews intValue] + 1];
+    NSLog(@"batchDidComplete:%d:%d:%f", [_countViews intValue], [_noViews intValue], timeInterval);
+    _start = [NSDate date];
+    if ([_noViews intValue] <= 0) {
+        dispatch_block_cancel(_work);
+    }
+        _work = dispatch_block_create(0, ^{
+            _start = [NSDate date];
+            _end = _start;
+
+            BOOL capturedScreen = [self logScreenLayout:_currentPageName];
+            [[TLFCustomEvent sharedInstance] logEvent:@"ReactPlugin" values:@{@"ReactLayoutTime":[NSString stringWithFormat:@"%@", _totalLayoutTime]}];
+            NSLog(@"batchDidComplete:Captured React Page:%@:%@", capturedScreen ? @"true": @"false", _totalLayoutTime);
+            _totalLayoutTime = 0;
+        });
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), _work);
+}
+
+-(BOOL)logScreenLayout:(NSString *)name {
+    UIViewController *uv = nil;
+    UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    while (topController.presentedViewController) {
+        topController = topController.presentedViewController;
+    }
+    if (topController) {
+        uv = topController;
+    }
+    return [[TLFCustomEvent sharedInstance] logScreenLayoutWithViewController:uv andName:name];
+}
+
+/*!
+ * @discussion Sets the current screen name for layout capture.
+ * @param name - Name to be used for screenview name.
+ * @return Whether it was able to set the value as Boolean value.
+ */
+RCT_EXPORT_METHOD(setCurrentScreenName:(NSString *)name  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject) {
+    _currentPageName = name;
+    id result =  [NSNumber numberWithBool:YES];
+    [self updateResult:result resolver:resolve rejecter:reject];
 }
 
 /*!
@@ -291,21 +360,13 @@ RCT_EXPORT_METHOD(logScreenLayout:(NSString*)name resolver:(RCTPromiseResolveBlo
 }
 
 - (kTLFMonitoringLevelType)getLogLevel:(nonnull NSNumber*)level {
-    kTLFMonitoringLevelType monitorLevel;
+    kTLFMonitoringLevelType monitorLevel = kTLFMonitoringLevelIgnore;
     if (level.intValue == kTLFMonitoringLevelIgnore) {
         monitorLevel = kTLFMonitoringLevelIgnore;
-    } else if (level.intValue == kTLFMonitoringLevelError) {
-        monitorLevel = kTLFMonitoringLevelError;
-    } else if (level.intValue == kTLFMonitoringLevelWarning) {
-        monitorLevel = kTLFMonitoringLevelWarning;
-    } else if (level.intValue == kTLFMonitoringLevelVerbose) {
-        monitorLevel = kTLFMonitoringLevelVerbose;
-    } else if (level.intValue == kTLFMonitoringLevelInfo) {
-        monitorLevel = kTLFMonitoringLevelInfo;
-    } else if (level.intValue == kTLFMonitoringLevelDebug) {
-        monitorLevel = kTLFMonitoringLevelDebug;
-    } else {
-        monitorLevel = kTLFMonitoringLevelVerbose;
+    } else if (level.intValue == kTLFMonitoringLevelCellularAndWiFi) {
+        monitorLevel = kTLFMonitoringLevelCellularAndWiFi;
+    } else if (level.intValue >= kTLFMonitoringLevelWiFi) {
+        monitorLevel = kTLFMonitoringLevelWiFi;
     }
     return monitorLevel;
 }
