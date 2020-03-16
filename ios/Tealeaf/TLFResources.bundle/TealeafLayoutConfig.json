@@ -7,20 +7,9 @@
             "ScreenShot": true,
             "NumberOfWebViews": 0,
             "CaptureUserEvents": true,
-            "CaptureScreenVisits": true,
-            "CaptureLayoutOn": 2,
-            "CaptureScreenshotOn": 1
-        },
-        "PaymentViewController":{
-            "ScreenChange": false,
-            "DisplayName": "The Payment Screen",
-            "CaptureLayoutDelay": 0,
-            "ScreenShot": false,
-            "NumberOfWebViews": 0,
-            "CaptureUserEvents": false,
             "CaptureScreenVisits": false,
             "CaptureLayoutOn": 2,
-            "CaptureScreenshotOn": 0
+            "CaptureScreenshotOn": 1
         }
     },
     "AppendMapIds": {
