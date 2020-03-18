@@ -3,6 +3,12 @@
 
 # Only iOS is supported at this moment
 
+---
+
+## Features
+- Will automatically capture pages after they completed by React Javascript Bridge.
+- Will log ReactLayoutTime via custom event based on when component render and completion of React Javascript Bridge, but this will requiere of manual instrumentation to get correct values.
+---
 ## Getting started
 
 **This module uses only enhanced replay, if you like to use traditional replay. Use https://www.npmjs.com/package/react-native-wcxa**
@@ -47,7 +53,6 @@ Add **bundle resources** that will need to be copied which are **TLFResources.bu
 
 Add **environmental variables**: 
 * **EODebug** and **TLF_DEBUG** will help debugging. 
-* **TLF_AUTO_ENABLE** will help automatically start the libraries.
 * If using latest xCode 10 and new simulator add Name **OS_ACTIVITY_MODE** with Value **disable**. <span style="color:red">But this will block xCode console information for debugging library. Please use an older simulator and have **OS_ACTIVITY_MODE** not selected.</span>
 
 Note: **TLF_AUTO_ENABLE** is no longer needed as of version 7.6.0.
@@ -61,68 +66,77 @@ You will also need to open **TealeafBasicConfig.plist** to adjust **AppKey** and
 ---
 ### Android
 
-Manual installation
+#### Not Implemented Yet, Please Do Not Test
 
-Tealeaf React-Native Android module is built with Android Studio 3.2.1, and compiled against gradle version 4.6(3.2.1).
+---
+### React Integration
 
+#### Getting correct ReactLayoutTime values
 
-## Skip this if Android Studio project already exists (YourApp/android):
+- In order to get correct ReactLayoutTime, you will need to set current screen
+ name during render method manually in the React pages.
 
-`$ react-native upgrade`
-
-`$ react-native link react-native-acoustic-ea-tealeaf`    
-
-
-## Load required Javascript Bundle index.android.bundle under assets folder
-(Open terminal in project directory) 
-
-`$ mkdir android/app/src/main/assets`
-
-## Create the bundle and put under assets(Required when app's Javascript code changes)
-
-`$ react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res`
-
-## Open Android Studio Project
-Follow IDE instructions to update plugin or dependency requirements.
-
-## Insert required permission in androidmanifest.xml file
-
+#### Syntax
 ```javascript
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+// Add import
+import {NativeModules, findNodeHandle} from 'react-native';
+const Tealeaf = NativeModules.RNCxa;
+
+try {
+  var result = await Tealeaf.setCurrentScreenName("HomePage");
+  console.log("setCurrentScreenName", result);
+} catch (e) {
+  console.error(e);
+}
 ```
 
-## Insert if Geo location logging is needed
-```javascript
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+#### Example React Page Instrumented
+ ```javascript
+// Example:
+import React, { Component } from "react";
+import {
+  Container,
+  Header,
+  Title,
+  Content,
+  Button,
+  Left,
+  Right,
+  Body,
+  Text
+} from "native-base";
+import styles from "./styles";
+
+// Add import
+import {NativeModules, findNodeHandle} from 'react-native';
+const Tealeaf = NativeModules.RNCxa;
+
+class Header1 extends Component {
+  render() {
+    var result1 = await Tealeaf.setCurrentScreenName("HomePage");
+    console.log("setCurrentScreenName", result);
+    return (
+      <Container style={styles.container}>
+        <Header>
+          <Left />
+          <Body>
+            <Title>Header</Title>
+          </Body>
+          <Right />
+        </Header>
+
+        <Content padder>
+          <Button onPress={() => this.props.navigation.goBack()}>
+            <Text>Back</Text>
+          </Button>
+        </Content>
+      </Container>
+    );
+  }
+}
+export default Header1;
+
 ```
-
-## Setup Tealeaf Gesture in Android MainActivity.java class
-Insert below code snippet in MainActivity for Gesture events capturing:
-
-```javascript
-public boolean dispatchTouchEvent(MotionEvent e)
-    {
-        Tealeaf.dispatchTouchEvent(this, e);
-        return super.dispatchTouchEvent(e);
-    }
-```
-You will also need to open **TealeafBasicConfig.properties** to adjust **AppKey** and **PostMessageUrl**.
-
-![](https://github.com/ibm-watson-cxa/ea_react_native_module/raw/master/screenshots/TealeafBasicConfig_appkey.png)
-
-## Installation complete, run your app
-`$ react-native run-android`
-
-
-#### Known issues
-1) Screen capture in replay sometimes display overlapping items which is expected when Tealeaf captures UI state during animation.  It's recommended to set delay value from app's Javascript code.
-2) In Logcat shows error Invalid IDs such as 0x00000001. Please ignore since React-Native app doesn't generate all resource Ids mapping.
-3) Android compile issues.  Please see the example app for reference on common setup:
-
-    NativeBase-KitchenSink/Example/android
-
 ---
 
 ## SDK Usage
