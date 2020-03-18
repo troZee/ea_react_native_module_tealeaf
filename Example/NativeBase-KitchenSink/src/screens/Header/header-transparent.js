@@ -12,8 +12,12 @@ import {
   Body
 } from "native-base";
 
+import {NativeModules, findNodeHandle} from 'react-native';
+const Tealeaf = NativeModules.RNCxa;
+
 class HeaderTransparent extends Component {
   render() {
+    Tealeaf.setCurrentScreenName("HeaderTransparent");
     return (
       <Container style={{ backgroundColor: "#87cefa" }}>
         <Header transparent>

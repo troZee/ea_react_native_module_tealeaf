@@ -13,8 +13,12 @@ import {
 } from "native-base";
 import styles from "./styles";
 
+import {NativeModules, findNodeHandle} from 'react-native';
+const Tealeaf = NativeModules.RNCxa;
+
 class Header5 extends Component {
   render() {
+    Tealeaf.setCurrentScreenName("Header5");
     return (
       <Container style={styles.container}>
         <Header>

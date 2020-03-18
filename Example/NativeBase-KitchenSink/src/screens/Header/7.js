@@ -14,8 +14,12 @@ import {
 } from "native-base";
 import styles from "./styles";
 
+import {NativeModules, findNodeHandle} from 'react-native';
+const Tealeaf = NativeModules.RNCxa;
+
 class Header7 extends Component {
   render() {
+    Tealeaf.setCurrentScreenName("Header7");
     return (
       <Container style={styles.container}>
         <Header hasSubtitle>

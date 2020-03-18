@@ -62,8 +62,12 @@ const datas = [
   }
 ];
 
+import {NativeModules, findNodeHandle} from 'react-native';
+const Tealeaf = NativeModules.RNCxa;
+
 class HeaderNB extends Component {
   render() {
+    Tealeaf.setCurrentScreenName("Header");
     return (
       <Container style={styles.container}>
         <Header>
