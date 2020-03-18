@@ -2,7 +2,7 @@
     "AutoLayout": {
         "IBMGlobalScreenSettings":{
             "ScreenChange": true,
-            "DisplayName": "",
+            "DisplayName": "SplashScreen",
             "CaptureLayoutDelay": 0,
             "ScreenShot": true,
             "NumberOfWebViews": 0,
