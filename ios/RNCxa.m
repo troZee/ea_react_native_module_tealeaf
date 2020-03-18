@@ -108,6 +108,8 @@ RCT_EXPORT_MODULE()
  */
 RCT_EXPORT_METHOD(setCurrentScreenName:(NSString *)name  resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject) {
+    _start = [NSDate date];
+    _totalLayoutTime = 0;
     _currentPageName = name;
     id result =  [NSNumber numberWithBool:YES];
     [self updateResult:result resolver:resolve rejecter:reject];
