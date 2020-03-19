@@ -113,8 +113,7 @@ const Tealeaf = NativeModules.RNCxa;
 
 class Header1 extends Component {
   render() {
-    var result1 = await Tealeaf.setCurrentScreenName("HomePage");
-    console.log("setCurrentScreenName", result);
+    Tealeaf.setCurrentScreenName("HomePage");
     return (
       <Container style={styles.container}>
         <Header>
