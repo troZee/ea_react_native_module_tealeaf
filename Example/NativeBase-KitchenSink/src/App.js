@@ -312,7 +312,40 @@ const AppNavigator = createStackNavigator(
 
 const AppContainer = createAppContainer(AppNavigator);
 
+import {NativeModules, findNodeHandle} from 'react-native';
+const Tealeaf = NativeModules.RNCxa;
+import {TLTRN} from "../node_modules/react-native-acoustic-ea-tealeaf/lib/TLTRN";
+
+let currentScreen = "Home";
+let prevScreen = null;
+TLTRN.init(currentScreen, 0);
+
+// gets the current screen from navigation state
+function getCurrentRouteName(navigationState) {
+  if (!navigationState) {
+    return null;
+  }
+  const route = navigationState.routes[navigationState.index];
+  // dive into nested navigators
+  if (route.routes) {
+    return getCurrentRouteName(route);
+  }
+  return route.routeName;
+}
+
 export default () =>
   <Root>
-    <AppContainer />
+    <AppContainer 
+        onNavigationStateChange={(prevState, currentState) => {
+            currentScreen = getCurrentRouteName(currentState);
+            prevScreen = getCurrentRouteName(prevState);
+
+            if (prevScreen !== currentScreen) {
+                // the line below uses the Google Analytics tracker
+                // change the tracker here to use other Mobile analytics SDK.
+                // console.log("currentScreen:",currentScreen);
+                TLTRN.currentScreen = currentScreen;
+            }
+        }}
+    />
   </Root>;
