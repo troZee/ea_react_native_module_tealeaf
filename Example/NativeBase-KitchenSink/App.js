@@ -5,7 +5,6 @@ const Tealeaf = NativeModules.RNCxa;
 
 export default class App extends React.Component {
   render() {
-  	Tealeaf.setCurrentScreenName("Home");
     return <Setup />;
   }
 }
