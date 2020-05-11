@@ -26,7 +26,51 @@ This will add it to your iOS Xcode project and Android Studio project:
 To upgrade node_modules and get latest call:
 
 `$ npm install`
+___
+### React
 
+In order to capture correctly screen tracking based on https://reactnavigation.org/docs/1.x/screen-tracking/. Please add the following:
+
+#### Syntax added to App.js
+```javascript
+import {NativeModules, findNodeHandle} from 'react-native';
+const Tealeaf = NativeModules.RNCxa;
+import {TLTRN} from "../node_modules/react-native-acoustic-ea-tealeaf/lib/TLTRN";
+
+let currentScreen = "Home";
+let prevScreen = null;
+// Initialize the library with starting page and no debug information.
+TLTRN.init(currentScreen, 0);
+
+// gets the current screen from navigation state
+function getCurrentRouteName(navigationState) {
+  if (!navigationState) {
+    return null;
+  }
+  const route = navigationState.routes[navigationState.index];
+  // dive into nested navigators
+  if (route.routes) {
+    return getCurrentRouteName(route);
+  }
+  return route.routeName;
+}
+
+export default () =>
+  <Root>
+    <AppContainer 
+        onNavigationStateChange={(prevState, currentState) => {
+            currentScreen = getCurrentRouteName(currentState);
+            prevScreen = getCurrentRouteName(prevState);
+
+            if (prevScreen !== currentScreen) {
+                // the line below uses the Tealeaf library to get latest screen
+                // console.log("currentScreen:",currentScreen);
+                TLTRN.currentScreen = currentScreen;
+            }
+        }}
+    />
+  </Root>;
+```
 ---
 ### iOS
 
@@ -233,7 +277,7 @@ const Tealeaf = NativeModules.RNCxa;
 
 try {
   var dict = { shopping: "done" };
-  var result = await Tealeaf.("ShopClick", dict, 3);
+  var result = await Tealeaf.logCustomEvent("ShopClick", dict, 3);
   console.log("logCustomEvent", result);
 } catch (e) {
   console.error(e);
