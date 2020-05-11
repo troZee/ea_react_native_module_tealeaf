@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>AppKey</key>
-	<string>42f3bf9f97bc4c20a48a9b77b3fe9333</string>
+	<string>93b07040e94f4d979ccded272b3a15c1</string>
 	<key>CaptureNativeGesturesOnWebview</key>
 	<false/>
 	<key>connection</key>
@@ -64,7 +64,7 @@
 	<key>ScreenShotPixelDensity</key>
 	<real>1.5</real>
 	<key>PostMessageUrl</key>
-	<string>https://qa3wscollector.tealeaf-aws.com/collector/collectorPost</string>
+	<string>https://collector-tealeaf-staging.goacoustic.com/collector/collectorPost</string>
 	<key>printScreen</key>
 	<integer>2</integer>
 	<key>ScreenshotFormat</key>
