@@ -18,7 +18,6 @@ const Tealeaf = NativeModules.RNCxa;
 
 class HeaderNoLeft extends Component {
   render() {
-    Tealeaf.setCurrentScreenName("HeaderNoLeft");
     return (
       <Container style={styles.container}>
         <Header noLeft>

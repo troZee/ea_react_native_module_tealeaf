@@ -75,7 +75,6 @@ class HeaderNB extends Component {
   // eslint-disable-line
 
   render() {
-    Tealeaf.setCurrentScreenName("Header");
     return (
       <Container style={styles.container}>
         <Header>

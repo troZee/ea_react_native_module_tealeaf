@@ -18,7 +18,6 @@ const Tealeaf = NativeModules.RNCxa;
 
 class HeaderNoShadow extends Component {
   render() {
-    Tealeaf.setCurrentScreenName("HeaderNoShadow");
     return (
       <Container style={styles.container}>
         <Header noShadow>

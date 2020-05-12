@@ -18,7 +18,6 @@ const Tealeaf = NativeModules.RNCxa;
 
 class HeaderSpan extends Component {
   render() {
-    Tealeaf.setCurrentScreenName("HeaderSpan");
     return (
       <Container style={styles.container}>
         <Header span>
