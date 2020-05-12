@@ -141,7 +141,7 @@ public class RNCxaModule extends ReactContextBaseJavaModule implements Lifecycle
 
         // Convert to conform with React-Native MAP type
         for (Map.Entry<String, Object> entry : readableMap.toHashMap().entrySet()) {
-            map.put(entry.getKey(), (String) entry.getValue());
+            map.put(entry.getKey(), entry.getValue().toString());
         }
 
         final boolean result = Tealeaf.logCustomEvent(eventName, map, logLevel);
