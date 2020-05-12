@@ -1,9 +1,12 @@
 package com.nativebasekitchensink;
 
+import android.view.MotionEvent;
+
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
 import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
+import com.tl.uic.Tealeaf;
 
 public class MainActivity extends ReactActivity {
 
@@ -24,5 +27,11 @@ public class MainActivity extends ReactActivity {
                 return new RNGestureHandlerEnabledRootView(MainActivity.this);
             }
         };
+    }
+
+    public boolean dispatchTouchEvent(MotionEvent e)
+    {
+        Tealeaf.dispatchTouchEvent(this, e);
+        return super.dispatchTouchEvent(e);
     }
 }
