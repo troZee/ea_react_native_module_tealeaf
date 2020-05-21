@@ -102,20 +102,6 @@ RCT_EXPORT_MODULE()
 }
 
 /*!
- * @discussion Sets the current screen name for layout capture.
- * @param name - Name to be used for screenview name.
- * @return Whether it was able to set the value as Boolean value.
- */
-RCT_EXPORT_METHOD(setCurrentScreenName:(NSString *)name  resolver:(RCTPromiseResolveBlock)resolve
-                  rejecter:(RCTPromiseRejectBlock)reject) {
-    _start = [NSDate date];
-    _totalLayoutTime = 0;
-    _currentPageName = name;
-    id result =  [NSNumber numberWithBool:YES];
-    [self updateResult:result resolver:resolve rejecter:reject];
-}
-
-/*!
  * @discussion Sets the module's configuration item from AdvancedConfig.json or BasicConfig.plist that matches the specified key as a BOOL value.
  * @param key - Key to update value in configuration settings.
  * @param value - Value to use.
