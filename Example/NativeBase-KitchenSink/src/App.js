@@ -318,7 +318,7 @@ import {TLTRN} from "../node_modules/react-native-acoustic-ea-tealeaf/lib/TLTRN"
 
 let currentScreen = "Home";
 let prevScreen = null;
-TLTRN.init(currentScreen, 0);
+TLTRN.init(currentScreen, 1);
 
 // gets the current screen from navigation state
 function getCurrentRouteName(navigationState) {
