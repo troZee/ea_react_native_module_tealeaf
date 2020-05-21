@@ -160,7 +160,8 @@ public class RNCxaModule extends ReactContextBaseJavaModule implements Lifecycle
      */
     @ReactMethod
     public void logScreenLayout(final String logicalPageName, final Promise promise) {
-        final boolean result = Tealeaf.logScreenLayout(getCurrentActivity(), logicalPageName, 500);
+        Tealeaf.logScreenview(getCurrentActivity(), logicalPageName, ScreenviewType.LOAD);
+        final boolean result = Tealeaf.logLayout(getCurrentActivity(), logicalPageName, false);
         updateResult(result, promise);
     }
 
