@@ -1,5 +1,5 @@
 {
-  "LibraryVersion": "10.2.8",
+  "LibraryVersion": "10.3.47",
   "FilterMessageTypes": false,
   "MessageTypes": "4,5",
   "AddMessageTypeHeader": false,
@@ -24,5 +24,7 @@
   "EnableActivityLifeCycleListener": true,
   "UseXpathId": false,
   "RemoveAllCookies": false,
-  "EnableEnhancedMobileReplay": false
+  "ColorPrimary": "#3F51B5",
+  "ColorPrimaryDark": "#303F9F",
+  "ColorAccent": "#FF4081"
 }

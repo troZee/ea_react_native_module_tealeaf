@@ -1,17 +1,25 @@
 {
   "AutoLayout": {
-    "MainActivity": {
-      "do": false,
-      "screenViewName": "MainActivity",
-      "delay": 1000,
-      "takeScreenShot": false
+    "IBMGlobalScreenSettings":{
+      "ScreenChange": true,
+      "DisplayName": "MainActivity",
+      "CaptureLayoutDelay": 0,
+      "ScreenShot": true,
+      "NumberOfWebViews": 0,
+      "CaptureUserEvents": true,
+      "CaptureScreenVisits": false,
+      "CaptureLayoutOn": 2,
+      "CaptureScreenshotOn": 1
     }
   },
   "AppendMapIds": {
-    "com.any.package:id/givenIdOnXmlLayout1": {
+    "[w,9290],[v,0]": {
+      "mid": "ASimpleUIView"
+    },
+    "tag2999999": {
       "mid": "giveAdditionalId1"
     },
-    "com.any.package:id/givenIdOnXmlLayout2": {
+    "idxPathValue": {
       "mid": "giveAdditionalId2"
     }
   }
