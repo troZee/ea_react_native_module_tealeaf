@@ -56,3 +56,4 @@ buck-out/
 /ios/Podfile.lock
 /ios/Pods
 /Example/NativeBase-KitchenSink/package-lock.json
+/Example/NativeBase-KitchenSink/android/app/build
