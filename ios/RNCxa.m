@@ -195,6 +195,19 @@ RCT_EXPORT_METHOD(logCustomEvent:(NSString *)eventName values:(NSDictionary *)va
     [self updateResult:result resolver:resolve rejecter:reject];
 }
 
+/*!
+ @discussion Log exception.
+ @param eventName - the name of the event to be logged this will appear in the posted json.
+ @param values - additional key value pairs to be logged with the message.
+ @param level - set a custom log level to the event.
+ @return Boolean value will return whether it was able to log the custom event.
+ */
+RCT_EXPORT_METHOD(logExceptionEvent:(NSString *)message stack:(NSString *)stackInfo resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject) {
+    id result = [NSNumber numberWithBool:[[TLFCustomEvent sharedInstance] logExceptionEvent:@"React Plugin" message:message stacktrace:stackInfo isUnhandled:YES]];
+    [self updateResult:result resolver:resolve rejecter:reject];
+}
+
 #pragma mark - Location
 /*!
  @discussion Requests that the framework logs a geographic location
