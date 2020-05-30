@@ -66,39 +66,6 @@ RCT_EXPORT_MODULE()
 }
 
 - (void)batchDidComplete {
-//        _end = [NSDate date];
-//        _noViews = [NSNumber numberWithInt:[_noViews intValue] - 1];
-    
-//    NSTimeInterval timeInterval = [_end timeIntervalSinceDate:_start];
-//    _totalLayoutTime = [NSNumber numberWithDouble:(_totalLayoutTime.doubleValue + timeInterval)];
-//    _countViews = [NSNumber numberWithInt:[_countViews intValue] + 1];
-//    NSLog(@"batchDidComplete:%d:%d:%f", [_countViews intValue], [_noViews intValue], timeInterval);
-//    _start = [NSDate date];
-//    if ([_noViews intValue] <= 0) {
-//        dispatch_block_cancel(_work);
-//    }
-//        _work = dispatch_block_create(0, ^{
-//            _start = [NSDate date];
-//            _end = _start;
-//
-//            BOOL capturedScreen = [self logScreenLayout:_currentPageName];
-//            [[TLFCustomEvent sharedInstance] logEvent:@"ReactPlugin" values:@{@"ReactLayoutTime":[NSString stringWithFormat:@"%@", _totalLayoutTime]}];
-//            NSLog(@"batchDidComplete:Captured React Page:%@:%@", capturedScreen ? @"true": @"false", _totalLayoutTime);
-//            _totalLayoutTime = 0;
-//        });
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), _work);
-}
-
--(BOOL)logScreenLayout:(NSString *)name {
-    UIViewController *uv = nil;
-    UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
-    while (topController.presentedViewController) {
-        topController = topController.presentedViewController;
-    }
-    if (topController) {
-        uv = topController;
-    }
-    return [[TLFCustomEvent sharedInstance] logScreenLayoutWithViewController:uv andName:name];
 }
 
 /*!
