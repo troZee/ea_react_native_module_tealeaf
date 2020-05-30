@@ -164,10 +164,9 @@ RCT_EXPORT_METHOD(logCustomEvent:(NSString *)eventName values:(NSDictionary *)va
 
 /*!
  @discussion Log exception.
- @param eventName - the name of the event to be logged this will appear in the posted json.
- @param values - additional key value pairs to be logged with the message.
- @param level - set a custom log level to the event.
- @return Boolean value will return whether it was able to log the custom event.
+ @param message - the message of the error/exception to be logged this will appear in the posted json.
+ @param stackInfo - the stack trace to be logged with the message.
+ @return Boolean value will return whether it was able to log the exception event.
  */
 RCT_EXPORT_METHOD(logExceptionEvent:(NSString *)message stack:(NSString *)stackInfo resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject) {
