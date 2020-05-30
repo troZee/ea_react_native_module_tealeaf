@@ -23,6 +23,18 @@ const datas = [
     bg: "#C5F442"
   },
   {
+    name: "Error",
+    route: "ErrorPage",
+    icon: "md-alert",
+    bg: "#DA4437"
+  },
+  {
+    name: "Network",
+    route: "Network",
+    icon: "md-cloud-download",
+    bg: "#DA4437"
+  },
+  {
     name: "Header",
     route: "Header",
     icon: "arrow-up",

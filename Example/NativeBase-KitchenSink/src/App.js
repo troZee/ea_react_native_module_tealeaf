@@ -138,10 +138,16 @@ import Actionsheet from "./screens/actionsheet";
 import NHAccordion from "./screens/accordion/";
 import NHDatePicker from "./screens/datepicker/";
 
+import ErrorPage from "./screens/error/";
+
+import Network from "./screens/network/";
+
 const Drawer = createDrawerNavigator(
   {
     Home: { screen: Home },
     Anatomy: { screen: Anatomy },
+    ErrorPage: { screen: ErrorPage },
+    Network: { screen: Network },
     Header: { screen: Header },
     Footer: { screen: Footer },
     NHBadge: { screen: NHBadge },
@@ -180,6 +186,10 @@ const Drawer = createDrawerNavigator(
 const AppNavigator = createStackNavigator(
   {
     Drawer: { screen: Drawer },
+
+    Network: { screen: Network },
+
+    ErrorPage: { screen: ErrorPage },
 
     Header1: { screen: Header1 },
     Header2: { screen: Header2 },
