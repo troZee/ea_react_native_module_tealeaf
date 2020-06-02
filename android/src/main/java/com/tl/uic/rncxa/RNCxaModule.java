@@ -153,6 +153,20 @@ public class RNCxaModule extends ReactContextBaseJavaModule implements Lifecycle
     }
 
     /**
+     * Log exception.
+     *
+     * @param message   The message of the error/exception to be logged this will appear in the posted json.
+     * @param stackInfo The stack trace to be logged with the message.
+     * @param unhandled Whether exception is unhandled.
+     * @param promise   Javascript Promise interface.
+     */
+    @ReactMethod
+    public void logExceptionEvent(final String message, final String stackInfo, final Boolean unhandled, final Promise promise) {
+        final boolean result = Tealeaf.logExceptionEvent("React Plugin", message, stackInfo, unhandled);
+        updateResult(result, promise);
+    }
+
+    /**
      * Log Current Screen Layout
      *
      * @param logicalPageName Page name or title e.g. "Login View Controller"; Must not be empty.
