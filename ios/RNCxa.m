@@ -166,11 +166,12 @@ RCT_EXPORT_METHOD(logCustomEvent:(NSString *)eventName values:(NSDictionary *)va
  @discussion Log exception.
  @param message - the message of the error/exception to be logged this will appear in the posted json.
  @param stackInfo - the stack trace to be logged with the message.
+ @param unhandled - Whether exception is unhandled.
  @return Boolean value will return whether it was able to log the exception event.
  */
-RCT_EXPORT_METHOD(logExceptionEvent:(NSString *)message stack:(NSString *)stackInfo resolver:(RCTPromiseResolveBlock)resolve
+RCT_EXPORT_METHOD(logExceptionEvent:(NSString *)message stack:(NSString *)stackInfo unhandled:(BOOL)unhandled resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject) {
-    id result = [NSNumber numberWithBool:[[TLFCustomEvent sharedInstance] logExceptionEvent:@"React Plugin" message:message stacktrace:stackInfo isUnhandled:YES]];
+    id result = [NSNumber numberWithBool:[[TLFCustomEvent sharedInstance] logExceptionEvent:@"React Plugin" message:message stacktrace:stackInfo isUnhandled:unhandled]];
     [self updateResult:result resolver:resolve rejecter:reject];
 }
 
