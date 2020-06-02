@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2019 Acoustic, L.P. All rights reserved.
+// Copyright (C) 2020 Acoustic, L.P. All rights reserved.
 //
 // NOTICE: This file contains material that is confidential and proprietary to
 // Acoustic, L.P. and/or other developers. No license is granted under any intellectual or
@@ -88,6 +88,17 @@
 - (BOOL)logNSExceptionEvent:(NSException *)exception dataDictionary:(NSDictionary*)dataDictionary isUnhandled:(BOOL)unhandled;
 
 /*!
+ @brief Log an Exception with any additional data and setting the unhandled flag
+ @discussion In the event of an Exception, the developer can log that exception using the following API. In addition to the data provided by the exception additional data can be logged by passing a dictionary into the dataDictionary field. The developer can also override the unhandled key and set the exception as either a handled or unhandled exception.
+ @param name - the exception name to be logged.
+ @param message - the exception message to be logged.
+ @param stack - the exception stacktrace.
+ @param unhandled - a flag indicating if the exception was handled or left unhandled.
+ @return BOOL Whether the message was successfully logged or not
+ */
+- (BOOL)logExceptionEvent:(NSString *)name message:(NSString *)message stacktrace:(NSString *)stack isUnhandled:(BOOL)unhandled;
+
+/*!
  @brief Log an NSError
  @discussion In the event of an NSError has been generated this API allows for the logging of the error.
  @param error - the error to be logged.
@@ -139,7 +150,7 @@
  @brief Requests that the framework logs the connection information.
  @param initTime - Time duration since current session start
  @param loadTime - Time duration since current session start //TODO: EVALUATE what param loadTime actually means
- @param connection - The NSURLConnection object
+ @param connection - The NSURLSession object, can be nil
  @param request - The NSURLRequest object associated with the connection
  @param response - The NSURLResponse object from the connection request
  @param error - any NSError object
@@ -211,6 +222,13 @@
  @return if the event was successfully logged or not.
  */
 - (BOOL)logPrintScreenEvent;
+
+/**
+ Requests that the framework log an image as a background in a type 10 screen layout event.
+ @param image - UIImage object that needs to be added as a background for the layout
+ @return if the event was successfully logged or not.
+ */
+- (BOOL)logScreenLayoutWithImage:(UIImage *)image;
 
 /**
  Requests that the framework logs the layout of the screen
