@@ -24,7 +24,7 @@ class ErrorTryCatch extends Component {
 
   componentDidCatch(error, info) {
     console.log("Test: Try Catch Error=>" + error);
-    Tealeaf.logExceptionEvent(error.message, error.stack);
+    Tealeaf.logExceptionEvent(error.message, error.stack, true);
   }
 
   handleTryCatch() {
@@ -32,7 +32,7 @@ class ErrorTryCatch extends Component {
       throw new Error("Test: Try Catch Error");
     } catch (error) {
       console.log("Test: Try Catch Error=>" + error);
-      Tealeaf.logExceptionEvent(error.message, error.stack);
+      Tealeaf.logExceptionEvent(error.message, error.stack, false);
     }
   }
 
