@@ -139,8 +139,8 @@ import NHAccordion from "./screens/accordion/";
 import NHDatePicker from "./screens/datepicker/";
 
 import ErrorPage from "./screens/error/";
-
 import Network from "./screens/network/";
+import Map from "./screens/map/";
 
 const Drawer = createDrawerNavigator(
   {
@@ -148,6 +148,7 @@ const Drawer = createDrawerNavigator(
     Anatomy: { screen: Anatomy },
     ErrorPage: { screen: ErrorPage },
     Network: { screen: Network },
+    Map: { screen: Map },
     Header: { screen: Header },
     Footer: { screen: Footer },
     NHBadge: { screen: NHBadge },
@@ -190,6 +191,8 @@ const AppNavigator = createStackNavigator(
     Network: { screen: Network },
 
     ErrorPage: { screen: ErrorPage },
+
+    Map: { screen: Map },
 
     Header1: { screen: Header1 },
     Header2: { screen: Header2 },

@@ -35,6 +35,12 @@ const datas = [
     bg: "#DA4437"
   },
   {
+    name: "Map",
+    route: "Map",
+    icon: "md-map",
+    bg: "#DA4437"
+  },
+  {
     name: "Header",
     route: "Header",
     icon: "arrow-up",
