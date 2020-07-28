@@ -1,17 +1,13 @@
 
 # react-native-acoustic-ea-tealeaf
-
-# Only iOS is supported at this moment
-
 ---
-
 ## Features
 - Will automatically capture pages after they completed by React Javascript Bridge.
 - Will log ReactLayoutTime via custom event based on when component render and completion of React Javascript Bridge, but this will requiere of manual instrumentation to get correct values.
 ---
 ## Getting started
 
-**This module uses only enhanced replay, if you like to use traditional replay. Use https://www.npmjs.com/package/react-native-wcxa**
+**This module uses only enhanced replay. This module is no longer supported: https://www.npmjs.com/package/react-native-wcxa**
 
 This will add it to your package.json file:
 
@@ -110,7 +106,74 @@ You will also need to open **TealeafBasicConfig.plist** to adjust **AppKey** and
 ---
 ### Android
 
-#### Not Implemented Yet, Please Do Not Test
+Manual installation
+
+Tealeaf React-Native Android module is built with Android Studio 3.2.1, and compiled against gradle version 4.6(3.2.1).
+
+
+## Skip this if Android Studio project already exists (YourApp/android):
+```javascript
+`$ react-native upgrade`
+
+`$ react-native link react-native-acoustic-ea`    
+```
+
+## Load required Javascript Bundle index.android.bundle under assets folder. Create directory assets if project does not contain it:
+```javascript
+(Open terminal in project directory) 
+
+`$ mkdir android/app/src/main/assets`
+```
+
+## Create the bundle and put under assets(Required when app's Javascript code changes)
+```javascript
+`$ react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res`
+```
+
+## Open Android Studio Project
+Follow IDE instructions to update plugin or dependency requirements.
+
+## Insert required permission in androidmanifest.xml file
+
+```javascript
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+
+<application
+      android:usesCleartextTraffic="true"
+```
+
+## Insert if Geo location logging is needed
+```javascript
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+```
+
+## Setup Tealeaf Gesture in Android MainActivity.java class
+Insert below code snippet in MainActivity for Gesture events capturing:
+
+```javascript
+public boolean dispatchTouchEvent(MotionEvent e)
+    {
+        Tealeaf.dispatchTouchEvent(this, e);
+        return super.dispatchTouchEvent(e);
+    }
+```
+You will also need to open **TealeafBasicConfig.properties** to adjust **AppKey** and **PostMessageUrl**.
+
+![](https://github.com/ibm-watson-cxa/ea_react_native_module/raw/master/screenshots/TealeafBasicConfig_appkey.png)
+
+## Installation complete, run your app
+```javascript
+`$ react-native run-android`
+```
+
+#### Known issues
+1) Screen capture in replay sometimes display overlapping items which is expected when Tealeaf captures UI state during animation.  It's recommended to set delay value from app's Javascript code.
+2) In Logcat shows error Invalid IDs such as 0x00000001. Please ignore since React-Native app doesn't generate all resource Ids mapping.
+3) Android compile issues.  Please see the example app for reference on common setup:
+
+    NativeBase-KitchenSink/Example/android
 
 ---
 ### React Integration
