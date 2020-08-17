@@ -1,7 +1,8 @@
 {
   "name": "react-native-acoustic-ea-tealeaf",
-  "version": "12.4.0",
-  "description": "",
+  "version": "12.5.0",
+  "description": "React native plugin for Acoustic Experience Analytics",
+  "summary": "react-native ios android tealeaf cxa wxca er enhanced-replay",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -20,8 +21,8 @@
     "type": "git",
     "url": "https://github.com/ibm-watson-cxa/ea_react_native_module_tealeaf.git"
   },
-  "author": "Omar Hernandez and Chang Jie Yang",
-  "license": "See license in https://github.com/ibm-watson-cxa/ea_react_native_module_tealeaf/tree/master/Licenses",
+  "author": "Acoustic, L.P., Omar Hernandez and Chang Jie Yang",
+  "license": "See license in https://github.com/ibm-watson-cxa/ea_react_native_module_tealeaf/tree/master/Licenses/License",
   "homepage": "https://github.com/ibm-watson-cxa/ea_react_native_module_tealeaf",
   "peerDependencies": {
     "react-native": "^0.52.0"
