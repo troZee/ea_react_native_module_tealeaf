@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   
   s.source         = { :git => repository, :tag => s.version }
   s.preserve_paths = 'README.md', 'package.json', '*.js'
-  s.source_files   = "ios/RNCxa/**/*.{h,m}"
+  s.source_files   = "ios/**/*.{h,m}"
   
   s.dependency        'React'
   s.xcconfig       = { 'HEADER_SEARCH_PATHS' => '../../../ios/Pods/** ' }
