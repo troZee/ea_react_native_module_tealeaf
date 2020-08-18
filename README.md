@@ -13,7 +13,14 @@ This will add it to your package.json file:
 
 `$ npm install --save react-native-acoustic-ea-tealeaf`
 
-### Manual installation
+or
+
+`$ yarn add react-native-acoustic-ea-tealeaf -E`
+
+Since React Native 0.60 and higher, [autolinking](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md) makes the installation process simpler.
+
+-----
+### Manual installation using React Native 0.59.9 and lower
 
 This will add it to your iOS Xcode project and Android Studio project:
 
@@ -68,7 +75,7 @@ export default () =>
   </Root>;
 ```
 ---
-### iOS
+### Build configuration on iOS for React Native 0.59.9 and lower
 
 You might have issues with `react-native link react-native-acoustic-ea-tealeaf` on iOS. You will need to link **react-native-acoustic-ea-tealeaf** by dragging from **/node_modules/react-native-acoustic-ea-tealeaf/ios/RNCxa.xcodeproj** to **xCode libraries location**.
 
@@ -104,7 +111,7 @@ You will also need to open **TealeafBasicConfig.plist** to adjust **AppKey** and
 ![](https://github.com/ibm-watson-cxa/ea_react_native_module/raw/master/screenshots/adjust_TLFResources_bundle.png)
 
 ---
-### Android
+### Build configuration on Android
 
 Manual installation
 
