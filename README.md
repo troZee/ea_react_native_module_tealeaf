@@ -77,6 +77,51 @@ export default () =>
 ---
 ### Build configuration on iOS for React Native 0.59.9 and lower
 
+## Using Cocopods
+If the CocoaPods package manager is new to you, please first review its [installation guide](https://guides.cocoapods.org/using/getting-started.html). Setup your Podfile (found at ios/Podfile as below, replacing all references to _YOUR_PROJECT_TARGET_ with your project target (it's the same as project name by default).
+#### Template - Podfile
+```javascript
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target '_YOUR_PROJECT_TARGET_' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  # use_frameworks!
+
+  rn_path = '../node_modules/react-native'
+  rn_tealeaf_path = '../node_modules/react-native-acoustic-ea-tealeaf'
+
+  pod 'yoga', path: "#{rn_path}/ReactCommon/yoga"
+  pod 'React', path: rn_path, subspecs: [
+    'Core',
+    'CxxBridge',
+    'DevSupport',
+    'RCTActionSheet',
+    'RCTAnimation',
+    'RCTGeolocation',
+    'RCTImage',
+    'RCTLinkingIOS',
+    'RCTNetwork',
+    'RCTSettings',
+    'RCTText',
+    'RCTVibration',
+    'RCTWebSocket'
+  ]
+  pod 'DoubleConversion', :podspec => "#{rn_path}/third-party-podspecs/DoubleConversion.podspec"
+  pod 'glog', :podspec => "#{rn_path}/third-party-podspecs/GLog.podspec"
+  pod 'Folly', :podspec => "#{rn_path}/third-party-podspecs/Folly.podspec"
+
+  pod 'react-native-acoustic-ea-tealeaf', path: rn_tealeaf_path
+
+end
+```
+Then to install pods run:
+```javascript
+cd ios
+pod install
+```
+
+## Not using Cocopods
 You might have issues with `react-native link react-native-acoustic-ea-tealeaf` on iOS. You will need to link **react-native-acoustic-ea-tealeaf** by dragging from **/node_modules/react-native-acoustic-ea-tealeaf/ios/RNCxa.xcodeproj** to **xCode libraries location**.
 
 ![](https://github.com/ibm-watson-cxa/ea_react_native_module/raw/master/screenshots/move_RNCxa_project.png)
