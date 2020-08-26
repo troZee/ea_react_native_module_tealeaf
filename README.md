@@ -80,7 +80,7 @@ export default () =>
 ## Using Cocopods
 If the CocoaPods package manager is new to you, please first review its [installation guide](https://guides.cocoapods.org/using/getting-started.html). Setup your Podfile (found at ios/Podfile as below, replacing all references to _YOUR_PROJECT_TARGET_ with your project target (it's the same as project name by default).
 #### Template - Podfile
-```javascript
+```
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
