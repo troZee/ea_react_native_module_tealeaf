@@ -19,11 +19,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ibm-watson-cxa/ea_react_native_module_tealeaf.git"
+    "url": "https://github.com/acoustic-analytics/ea_react_native_module_tealeaf.git"
   },
   "author": "Acoustic, L.P., Omar Hernandez and Chang Jie Yang",
-  "license": "See license in https://github.com/ibm-watson-cxa/ea_react_native_module_tealeaf/tree/master/Licenses/License",
-  "homepage": "https://github.com/ibm-watson-cxa/ea_react_native_module_tealeaf",
+  "license": "See license in https://github.com/acoustic-analytics/ea_react_native_module_tealeaf/tree/master/Licenses/License",
+  "homepage": "https://github.com/acoustic-analytics/ea_react_native_module_tealeaf",
   "peerDependencies": {
     "react-native": "^0.52.0"
   }
