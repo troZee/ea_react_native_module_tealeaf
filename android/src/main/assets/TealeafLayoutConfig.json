@@ -3,7 +3,7 @@
     "IBMGlobalScreenSettings":{
       "ScreenChange": true,
       "DisplayName": "MainActivity",
-      "CaptureLayoutDelay": 0,
+      "CaptureLayoutDelay": 500,
       "ScreenShot": true,
       "NumberOfWebViews": 0,
       "CaptureUserEvents": true,
