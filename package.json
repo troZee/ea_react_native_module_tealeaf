@@ -1,6 +1,6 @@
 {
   "name": "react-native-acoustic-ea-tealeaf",
-  "version": "12.7.0",
+  "version": "12.6.0",
   "description": "React native plugin for Acoustic Experience Analytics",
   "summary": "react-native ios android tealeaf cxa wxca er enhanced-replay",
   "main": "index.js",
@@ -25,6 +25,9 @@
   "license": "See license in https://github.com/acoustic-analytics/ea_react_native_module_tealeaf/tree/master/Licenses/License",
   "homepage": "https://github.com/acoustic-analytics/ea_react_native_module_tealeaf",
   "peerDependencies": {
+    "react-native": "^0.60.0"
+  },
+  "dependencies": {
     "react-native": "^0.60.0"
   }
 }

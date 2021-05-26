@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2020 Acoustic, L.P. All rights reserved.
+// Copyright (C) 2021 Acoustic, L.P. All rights reserved.
 //
 // NOTICE: This file contains material that is confidential and proprietary to
 // Acoustic, L.P. and/or other developers. No license is granted under any intellectual or
@@ -143,7 +143,7 @@ public class RNCxaModule extends ReactContextBaseJavaModule implements Lifecycle
     public void logCustomEvent(final String eventName, final ReadableMap readableMap, final int logLevel, final Promise promise) {
         HashMap<String, String> map = new HashMap<>();
 
-        // Convert to conform with React-Native MAP type
+         // Convert to conform with React-Native MAP type
         for (Map.Entry<String, Object> entry : readableMap.toHashMap().entrySet()) {
             map.put(entry.getKey(), entry.getValue().toString());
         }
@@ -167,7 +167,7 @@ public class RNCxaModule extends ReactContextBaseJavaModule implements Lifecycle
     }
 
     /**
-     * Log Current Screen Layout
+     * Log Current Screen Layout using Javascript thread.
      *
      * @param logicalPageName Page name or title e.g. "Login View Controller"; Must not be empty.
      * @param promise         Javascript Promise interface.
@@ -175,12 +175,12 @@ public class RNCxaModule extends ReactContextBaseJavaModule implements Lifecycle
     @ReactMethod
     public void logScreenLayout(final String logicalPageName, final Promise promise) {
         Tealeaf.logScreenview(getCurrentActivity(), logicalPageName, ScreenviewType.LOAD);
-        final boolean result = Tealeaf.logLayout(getCurrentActivity(), logicalPageName, false);
+        final boolean result = Tealeaf.logLayout(getCurrentActivity(), logicalPageName, false, true, true);
         updateResult(result, promise);
     }
 
     /**
-     * Log Current Screen Layout
+     * Log Current Screen Layout using native side background thread.
      *
      * @param logicalPageName Page name or title e.g. "Login View Controller"; Must not be empty.
      * @param delay           Number of seconds to wait before logging the view.

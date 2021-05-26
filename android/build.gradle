@@ -6,7 +6,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.android.tools.build:gradle:4.0.0'
     }
 }
 
@@ -34,12 +34,18 @@ allprojects {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
             url "$rootDir/../node_modules/react-native/android"
         }
+        maven {
+            // All of Tealeaf SDK libraries
+            url "https://raw.githubusercontent.com/acoustic-analytics/Android_Maven/beta"
+        }
     }
 }
 
 dependencies {
     implementation 'com.facebook.react:react-native:+'
-    implementation files('src/main/libs/eocore.jar')
+
+    // Tealeaf SDK libraries
+    implementation 'com.ea:eocore:2.0.82'
     // Allow Main app to reference Tealeaf library
-    api files('src/main/libs/tealeafmod.jar')
+    api 'com.ea:tealeaf:10.3.109'
 }
