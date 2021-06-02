@@ -1,12 +1,4 @@
 {
-  "name": "NativeBase-KitchenSink",
-  "displayName": "NativeBase-KitchenSink",
-  "expo": {
-    "name": "NativeBase-KitchenSink",
-    "slug": "NativeBase-KitchenSink",
-    "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
-  }
+  "name": "NativebaseKitchenSink",
+  "displayName": "NativebaseKitchenSink"
 }
