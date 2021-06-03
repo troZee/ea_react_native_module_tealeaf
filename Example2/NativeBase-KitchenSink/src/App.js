@@ -1,7 +1,8 @@
 import React from "react";
 import { Root } from "native-base";
-// import { StackNavigator, DrawerNavigator } from "react-navigation";
-import { createDrawerNavigator, createStackNavigator, createAppContainer } from "react-navigation";
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
 
 import Header from "./screens/Header/";
 import Header1 from "./screens/Header/1";
@@ -51,7 +52,7 @@ import IconInput from "./screens/form/iconInput";
 import SuccessInput from "./screens/form/success";
 import ErrorInput from "./screens/form/error";
 import DisabledInput from "./screens/form/disabledInput";
-import PickerInput from "./screens/form/pickerInput";
+// // import PickerInput from "./screens/form/pickerInput";
 import Icons from "./screens/icon/icon";
 import BasicIcon from "./screens/icon/basic";
 import StateIcon from "./screens/icon/state";
@@ -70,19 +71,19 @@ import NHListItemSelected from "./screens/list/listitem-selected";
 import NHListDivider from "./screens/list/list-divider";
 import NHListSeparator from "./screens/list/list-separator";
 import NHListHeader from "./screens/list/list-headers";
-import NHListIcon from "./screens/list/list-icon";
+// import NHListIcon from "./screens/list/list-icon";
 import NHListAvatar from "./screens/list/list-avatar";
 import NHListThumbnail from "./screens/list/list-thumbnail";
 import NHListItemNoIndent from "./screens/list/listitem-noIndent";
-import RegularPicker from "./screens/picker/regularPicker";
-import PickerWithIcon from "./screens/picker/picker-with-icon";
-import PlaceholderPicker from "./screens/picker/placeholderPicker";
-import PlaceholderPickerNote from "./screens/picker/placeholderPickernote";
-import BackButtonPicker from "./screens/picker/backButtonPicker";
-import PickerTextItemText from "./screens/picker/picker-text-itemtext";
-import HeaderPicker from "./screens/picker/headerPicker";
-import HeaderStylePicker from "./screens/picker/headerStylePicker";
-import CustomHeaderPicker from "./screens/picker/customHeaderPicker";
+// import RegularPicker from "./screens/picker/regularPicker";
+// import PickerWithIcon from "./screens/picker/picker-with-icon";
+// import PlaceholderPicker from "./screens/picker/placeholderPicker";
+// import PlaceholderPickerNote from "./screens/picker/placeholderPickernote";
+// import BackButtonPicker from "./screens/picker/backButtonPicker";
+// import PickerTextItemText from "./screens/picker/picker-text-itemtext";
+// import HeaderPicker from "./screens/picker/headerPicker";
+// import HeaderStylePicker from "./screens/picker/headerStylePicker";
+// import CustomHeaderPicker from "./screens/picker/customHeaderPicker";
 import BasicTab from "./screens/tab/basicTab";
 import ConfigTab from "./screens/tab/configTab";
 import ScrollableTab from "./screens/tab/scrollableTab";
@@ -102,7 +103,7 @@ import AdvancedDeck from "./screens/deckswiper/advanced";
 import HeaderNoLeft from "./screens/Header/header-noLeft";
 import NHCustomRadio from "./screens/radio/custom";
 import NHDefaultRadio from "./screens/radio/default";
-import PickerWithIconStyle from "./screens/picker/picker-with-iconstyle";
+// // import PickerWithIconStyle from "./screens/picker/picker-with-iconstyle";
 import AccordionDefault from "./screens/accordion/accordion-default";
 import AccordionIcon from "./screens/accordion/accordion-icon";
 import AccordionIconStyle from "./screens/accordion/accordion-icon-style";
@@ -127,238 +128,245 @@ import NHList from "./screens/list/";
 import NHRadio from "./screens/radio/";
 import NHSearchbar from "./screens/searchbar/";
 import NHSpinner from "./screens/spinner/";
-import NHPicker from "./screens/picker/";
+// // import NHPicker from "./screens/picker/";
 import NHTab from "./screens/tab/";
 import NHThumbnail from "./screens/thumbnail/";
 import NHTypography from "./screens/typography/";
-import SideBar from "./screens/sidebar";
+// import SideBar from "./screens/sidebar";
 import Segment from "./screens/segment";
 import NHToast from "./screens/toast/";
 import Actionsheet from "./screens/actionsheet";
 import NHAccordion from "./screens/accordion/";
-import NHDatePicker from "./screens/datepicker/";
+// import NHDatePicker from "./screens/datepicker/";
 
 import ErrorPage from "./screens/error/";
 import Network from "./screens/network/";
 import Map from "./screens/map/";
 
-const Drawer = createDrawerNavigator(
-  {
-    Home: { screen: Home },
-    Anatomy: { screen: Anatomy },
-    ErrorPage: { screen: ErrorPage },
-    Network: { screen: Network },
-    Map: { screen: Map },
-    Header: { screen: Header },
-    Footer: { screen: Footer },
-    NHBadge: { screen: NHBadge },
-    NHButton: { screen: NHButton },
-    NHCard: { screen: NHCard },
-    NHCheckbox: { screen: NHCheckbox },
-    NHDeckSwiper: { screen: NHDeckSwiper },
-    NHFab: { screen: NHFab },
-    NHForm: { screen: NHForm },
-    NHIcon: { screen: NHIcon },
-    NHLayout: { screen: NHLayout },
-    NHList: { screen: NHList },
-    ListSwipe: { screen: ListSwipe },
-    NHRadio: { screen: NHRadio },
-    NHSearchbar: { screen: NHSearchbar },
-    NHSpinner: { screen: NHSpinner },
-    NHPicker: { screen: NHPicker },
-    NHTab: { screen: NHTab },
-    NHThumbnail: { screen: NHThumbnail },
-    NHTypography: { screen: NHTypography },
-    Segment: { screen: Segment },
-    NHToast: { screen: NHToast },
-    Actionsheet: { screen: Actionsheet },
-    NHAccordion: { screen: NHAccordion },
-    NHDatePicker: { screen: NHDatePicker }
-  },
-  {
-    initialRouteName: "Home",
-    contentOptions: {
-      activeTintColor: "#e91e63"
-    },
-    contentComponent: props => <SideBar {...props} />
-  }
-);
+const Drawer = createDrawerNavigator();
+function MyDrawer() {
+  return (
+    <Drawer.Navigator>
+      <Drawer.Screen name="Home" component={Home} />
+      <Drawer.Screen name="Anatomy" component={Anatomy} />
+    </Drawer.Navigator>
+  );
+}
 
-const AppNavigator = createStackNavigator(
-  {
-    Drawer: { screen: Drawer },
+//   {
+//     Home: { screen: Home },
+//     Anatomy: { screen: Anatomy },
+//     ErrorPage: { screen: ErrorPage },
+//     Network: { screen: Network },
+//     Map: { screen: Map },
+//     Header: { screen: Header },
+//     Footer: { screen: Footer },
+//     NHBadge: { screen: NHBadge },
+//     NHButton: { screen: NHButton },
+//     NHCard: { screen: NHCard },
+//     NHCheckbox: { screen: NHCheckbox },
+//     NHDeckSwiper: { screen: NHDeckSwiper },
+//     NHFab: { screen: NHFab },
+//     NHForm: { screen: NHForm },
+//     NHIcon: { screen: NHIcon },
+//     NHLayout: { screen: NHLayout },
+//     NHList: { screen: NHList },
+//     ListSwipe: { screen: ListSwipe },
+//     NHRadio: { screen: NHRadio },
+//     NHSearchbar: { screen: NHSearchbar },
+//     NHSpinner: { screen: NHSpinner },
+//     // NHPicker: { screen: NHPicker },
+//     NHTab: { screen: NHTab },
+//     NHThumbnail: { screen: NHThumbnail },
+//     NHTypography: { screen: NHTypography },
+//     Segment: { screen: Segment },
+//     NHToast: { screen: NHToast },
+//     Actionsheet: { screen: Actionsheet },
+//     NHAccordion: { screen: NHAccordion },
+//     // NHDatePicker: { screen: NHDatePicker }
+//   },
+//   {
+//     initialRouteName: "Home",
+//     contentOptions: {
+//       activeTintColor: "#e91e63"
+//     },
+//     contentComponent: props => <SideBar {...props} />
+//   }
+// );
 
-    Network: { screen: Network },
+// const AppNavigator = createStackNavigator(
+//   {
+//     Drawer: { screen: Drawer },
 
-    ErrorPage: { screen: ErrorPage },
+//     Network: { screen: Network },
 
-    Map: { screen: Map },
+//     ErrorPage: { screen: ErrorPage },
 
-    Header1: { screen: Header1 },
-    Header2: { screen: Header2 },
-    Header3: { screen: Header3 },
-    Header4: { screen: Header4 },
-    Header5: { screen: Header5 },
-    Header6: { screen: Header6 },
-    Header7: { screen: Header7 },
-    Header8: { screen: Header8 },
-    HeaderSpan: { screen: HeaderSpan },
-    HeaderNoShadow: { screen: HeaderNoShadow },
-    HeaderNoLeft: { screen: HeaderNoLeft },
-    HeaderTransparent: { screen: HeaderTransparent },
+//     Map: { screen: Map },
 
-    BasicFooter: { screen: BasicFooter },
-    IconFooter: { screen: IconFooter },
-    IconText: { screen: IconText },
-    BadgeFooter: { screen: BadgeFooter },
+//     Header1: { screen: Header1 },
+//     Header2: { screen: Header2 },
+//     Header3: { screen: Header3 },
+//     Header4: { screen: Header4 },
+//     Header5: { screen: Header5 },
+//     Header6: { screen: Header6 },
+//     Header7: { screen: Header7 },
+//     Header8: { screen: Header8 },
+//     HeaderSpan: { screen: HeaderSpan },
+//     HeaderNoShadow: { screen: HeaderNoShadow },
+//     HeaderNoLeft: { screen: HeaderNoLeft },
+//     HeaderTransparent: { screen: HeaderTransparent },
 
-    Default: { screen: Default },
-    Outline: { screen: Outline },
-    Rounded: { screen: Rounded },
-    Block: { screen: Block },
-    Full: { screen: Full },
-    Custom: { screen: Custom },
-    Transparent: { screen: Transparent },
-    IconBtn: { screen: IconBtn },
-    Disabled: { screen: Disabled },
+//     BasicFooter: { screen: BasicFooter },
+//     IconFooter: { screen: IconFooter },
+//     IconText: { screen: IconText },
+//     BadgeFooter: { screen: BadgeFooter },
 
-    BasicCard: { screen: BasicCard },
-    NHCardItemBordered: { screen: NHCardItemBordered },
-    NHCardItemButton: { screen: NHCardItemButton },
-    NHCardImage: { screen: NHCardImage },
-    NHCardShowcase: { screen: NHCardShowcase },
-    NHCardList: { screen: NHCardList },
-    NHCardHeaderAndFooter: { screen: NHCardHeaderAndFooter },
-    NHCardTransparent: { screen: NHCardTransparent },
-    NHCardCustomBorderRadius: { screen: NHCardCustomBorderRadius },
+//     Default: { screen: Default },
+//     Outline: { screen: Outline },
+//     Rounded: { screen: Rounded },
+//     Block: { screen: Block },
+//     Full: { screen: Full },
+//     Custom: { screen: Custom },
+//     Transparent: { screen: Transparent },
+//     IconBtn: { screen: IconBtn },
+//     Disabled: { screen: Disabled },
 
-    SimpleDeck: { screen: SimpleDeck },
-    AdvancedDeck: { screen: AdvancedDeck },
+//     BasicCard: { screen: BasicCard },
+//     NHCardItemBordered: { screen: NHCardItemBordered },
+//     NHCardItemButton: { screen: NHCardItemButton },
+//     NHCardImage: { screen: NHCardImage },
+//     NHCardShowcase: { screen: NHCardShowcase },
+//     NHCardList: { screen: NHCardList },
+//     NHCardHeaderAndFooter: { screen: NHCardHeaderAndFooter },
+//     NHCardTransparent: { screen: NHCardTransparent },
+//     NHCardCustomBorderRadius: { screen: NHCardCustomBorderRadius },
 
-    BasicFab: { screen: BasicFab },
-    MultipleFab: { screen: MultipleFab },
+//     SimpleDeck: { screen: SimpleDeck },
+//     AdvancedDeck: { screen: AdvancedDeck },
 
-    FixedLabel: { screen: FixedLabel },
-    InlineLabel: { screen: InlineLabel },
-    FloatingLabel: { screen: FloatingLabel },
-    PlaceholderLabel: { screen: PlaceholderLabel },
-    StackedLabel: { screen: StackedLabel },
-    RegularInput: { screen: RegularInput },
-    UnderlineInput: { screen: UnderlineInput },
-    RoundedInput: { screen: RoundedInput },
-    IconInput: { screen: IconInput },
-    SuccessInput: { screen: SuccessInput },
-    ErrorInput: { screen: ErrorInput },
-    DisabledInput: { screen: DisabledInput },
-    PickerInput: { screen: PickerInput },
-    TextArea: { screen: TextArea },
+//     BasicFab: { screen: BasicFab },
+//     MultipleFab: { screen: MultipleFab },
 
-    Icons: { screen: Icons },
-    BasicIcon: { screen: BasicIcon },
-    StateIcon: { screen: StateIcon },
-    PlatformSpecificIcon: { screen: PlatformSpecificIcon },
-    IconFamily: { screen: IconFamily },
+//     FixedLabel: { screen: FixedLabel },
+//     InlineLabel: { screen: InlineLabel },
+//     FloatingLabel: { screen: FloatingLabel },
+//     PlaceholderLabel: { screen: PlaceholderLabel },
+//     StackedLabel: { screen: StackedLabel },
+//     RegularInput: { screen: RegularInput },
+//     UnderlineInput: { screen: UnderlineInput },
+//     RoundedInput: { screen: RoundedInput },
+//     IconInput: { screen: IconInput },
+//     SuccessInput: { screen: SuccessInput },
+//     ErrorInput: { screen: ErrorInput },
+//     DisabledInput: { screen: DisabledInput },
+//     // PickerInput: { screen: PickerInput },
+//     TextArea: { screen: TextArea },
 
-    RowNB: { screen: RowNB },
-    ColumnNB: { screen: ColumnNB },
-    NestedGrid: { screen: NestedGrid },
-    CustomRow: { screen: CustomRow },
-    CustomCol: { screen: CustomCol },
+//     Icons: { screen: Icons },
+//     BasicIcon: { screen: BasicIcon },
+//     StateIcon: { screen: StateIcon },
+//     PlatformSpecificIcon: { screen: PlatformSpecificIcon },
+//     IconFamily: { screen: IconFamily },
 
-    NHBasicList: { screen: NHBasicList },
-    NHListItemSelected: { screen: NHListItemSelected },
-    NHListDivider: { screen: NHListDivider },
-    NHListSeparator: { screen: NHListSeparator },
-    NHListHeader: { screen: NHListHeader },
-    NHListIcon: { screen: NHListIcon },
-    NHListAvatar: { screen: NHListAvatar },
-    NHListThumbnail: { screen: NHListThumbnail },
-    NHListItemNoIndent: { screen: NHListItemNoIndent },
+//     RowNB: { screen: RowNB },
+//     ColumnNB: { screen: ColumnNB },
+//     NestedGrid: { screen: NestedGrid },
+//     CustomRow: { screen: CustomRow },
+//     CustomCol: { screen: CustomCol },
 
-    BasicListSwipe: { screen: BasicListSwipe },
-    SwipeRowCustomStyle: { screen: SwipeRowCustomStyle },
-    MultiListSwipe: { screen: MultiListSwipe },
+//     NHBasicList: { screen: NHBasicList },
+//     NHListItemSelected: { screen: NHListItemSelected },
+//     NHListDivider: { screen: NHListDivider },
+//     NHListSeparator: { screen: NHListSeparator },
+//     NHListHeader: { screen: NHListHeader },
+//     // NHListIcon: { screen: NHListIcon },
+//     NHListAvatar: { screen: NHListAvatar },
+//     NHListThumbnail: { screen: NHListThumbnail },
+//     NHListItemNoIndent: { screen: NHListItemNoIndent },
 
-    RegularPicker: { screen: RegularPicker },
-    PickerWithIcon: { screen: PickerWithIcon },
-    PlaceholderPicker: { screen: PlaceholderPicker },
-    PlaceholderPickerNote: { screen: PlaceholderPickerNote },
-    BackButtonPicker: { screen: BackButtonPicker },
-    PickerTextItemText: { screen: PickerTextItemText },
-    HeaderPicker: { screen: HeaderPicker },
-    HeaderStylePicker: { screen: HeaderStylePicker },
-    CustomHeaderPicker: { screen: CustomHeaderPicker },
-    PickerWithIconStyle: { screen: PickerWithIconStyle },
+//     BasicListSwipe: { screen: BasicListSwipe },
+//     SwipeRowCustomStyle: { screen: SwipeRowCustomStyle },
+//     MultiListSwipe: { screen: MultiListSwipe },
 
-    NHCustomRadio: { screen: NHCustomRadio },
-    NHDefaultRadio: { screen: NHDefaultRadio },
+//     // RegularPicker: { screen: RegularPicker },
+//     // PickerWithIcon: { screen: PickerWithIcon },
+//     // PlaceholderPicker: { screen: PlaceholderPicker },
+//     // PlaceholderPickerNote: { screen: PlaceholderPickerNote },
+//     // BackButtonPicker: { screen: BackButtonPicker },
+//     // PickerTextItemText: { screen: PickerTextItemText },
+//     // HeaderPicker: { screen: HeaderPicker },
+//     // HeaderStylePicker: { screen: HeaderStylePicker },
+//     // CustomHeaderPicker: { screen: CustomHeaderPicker },
+//     // PickerWithIconStyle: { screen: PickerWithIconStyle },
 
-    BasicTab: { screen: BasicTab },
-    ConfigTab: { screen: ConfigTab },
-    ScrollableTab: { screen: ScrollableTab },
+//     NHCustomRadio: { screen: NHCustomRadio },
+//     NHDefaultRadio: { screen: NHDefaultRadio },
 
-    BasicSegment: { screen: BasicSegment },
-    AdvSegment: { screen: AdvSegment },
-    SegmentHeaderIcon: { screen: SegmentHeaderIcon },
+//     BasicTab: { screen: BasicTab },
+//     ConfigTab: { screen: ConfigTab },
+//     ScrollableTab: { screen: ScrollableTab },
 
-    BasicToast: { screen: BasicToast },
-    ToastDuration: { screen: ToastDuration },
-    ToastPosition: { screen: ToastPosition },
-    ToastType: { screen: ToastType },
-    ToastText: { screen: ToastText },
-    ToastButton: { screen: ToastButton },
+//     BasicSegment: { screen: BasicSegment },
+//     AdvSegment: { screen: AdvSegment },
+//     SegmentHeaderIcon: { screen: SegmentHeaderIcon },
 
-    RegularActionSheet: { screen: RegularActionSheet },
-    IconActionSheet: { screen: IconActionSheet },
+//     BasicToast: { screen: BasicToast },
+//     ToastDuration: { screen: ToastDuration },
+//     ToastPosition: { screen: ToastPosition },
+//     ToastType: { screen: ToastType },
+//     ToastText: { screen: ToastText },
+//     ToastButton: { screen: ToastButton },
 
-    AccordionDefault: { screen: AccordionDefault },
-    AccordionIcon: { screen: AccordionIcon },
-    AccordionIconStyle: { screen: AccordionIconStyle },
-    AccordionHeaderContentStyle: { screen: AccordionHeaderContentStyle },
-    AccordionCustomHeaderContent: { screen: AccordionCustomHeaderContent }
-  },
-  {
-    initialRouteName: "Drawer",
-    headerMode: "none"
-  }
-);
+//     RegularActionSheet: { screen: RegularActionSheet },
+//     IconActionSheet: { screen: IconActionSheet },
 
-const AppContainer = createAppContainer(AppNavigator);
+//     AccordionDefault: { screen: AccordionDefault },
+//     AccordionIcon: { screen: AccordionIcon },
+//     AccordionIconStyle: { screen: AccordionIconStyle },
+//     AccordionHeaderContentStyle: { screen: AccordionHeaderContentStyle },
+//     AccordionCustomHeaderContent: { screen: AccordionCustomHeaderContent }
+//   },
+//   {
+//     initialRouteName: "Drawer",
+//     headerMode: "none"
+//   }
+// );
 
-import {NativeModules, findNodeHandle} from 'react-native';
-const Tealeaf = NativeModules.RNCxa;
-import {TLTRN} from "../node_modules/react-native-acoustic-ea-tealeaf/lib/TLTRN";
+// import {NativeModules, findNodeHandle} from 'react-native';
+// const Tealeaf = NativeModules.RNCxa;
+// import {TLTRN} from "../node_modules/react-native-acoustic-ea-tealeaf/lib/TLTRN";
 
-let currentScreen = "Home";
-let prevScreen = null;
-TLTRN.init(currentScreen, 1);
+// let currentScreen = "Home";
+// let prevScreen = null;
+// TLTRN.init(currentScreen, 1);
 
 // gets the current screen from navigation state
-function getCurrentRouteName(navigationState) {
-  if (!navigationState) {
-    return null;
-  }
-  const route = navigationState.routes[navigationState.index];
-  // dive into nested navigators
-  if (route.routes) {
-    return getCurrentRouteName(route);
-  }
-  return route.routeName;
-}
+// function getCurrentRouteName(navigationState) {
+//   if (!navigationState) {
+//     return null;
+//   }
+//   const route = navigationState.routes[navigationState.index];
+//   // dive into nested navigators
+//   if (route.routes) {
+//     return getCurrentRouteName(route);
+//   }
+//   return route.routeName;
+// }
 
 export default () =>
   <Root>
-    <AppContainer 
-        onNavigationStateChange={(prevState, currentState) => {
-            currentScreen = getCurrentRouteName(currentState);
-            prevScreen = getCurrentRouteName(prevState);
+    <NavigationContainer 
+        // onNavigationStateChange={(prevState, currentState) => {
+        //     currentScreen = getCurrentRouteName(currentState);
+        //     prevScreen = getCurrentRouteName(prevState);
 
-            if (prevScreen !== currentScreen) {
-                // the line below uses the Google Analytics tracker
-                // change the tracker here to use other Mobile analytics SDK.
-                // console.log("currentScreen:",currentScreen);
-                TLTRN.currentScreen = currentScreen;
-            }
-        }}
+        //     if (prevScreen !== currentScreen) {
+        //         // the line below uses the Google Analytics tracker
+        //         // change the tracker here to use other Mobile analytics SDK.
+        //         // console.log("currentScreen:",currentScreen);
+        //         TLTRN.currentScreen = currentScreen;
+        //     }
+        // }}
     />
   </Root>;
