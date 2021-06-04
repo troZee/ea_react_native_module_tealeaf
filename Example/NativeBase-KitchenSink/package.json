@@ -1,53 +1,41 @@
 {
   "name": "NativebaseKitchenSink",
-  "version": "2.12.0",
+  "version": "3.0.1",
   "private": true,
-  "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "babel-eslint": "7.2.3",
-    "eslint": "4.18.2",
-    "eslint-plugin-flowtype": "2.35.0",
-    "eslint-plugin-import": "2.7.0",
-    "eslint-plugin-jsx-a11y": "6.0.2",
-    "eslint-plugin-prettier": "2.1.2",
-    "eslint-plugin-react": "7.1.0",
-    "eslint-plugin-react-native": "3.0.1",
-    "flow-bin": "0.78.0",
-    "flow-typed": "2.5.1",
-    "husky": "0.14.3",
-    "jest": "24.1.0",
-    "metro-react-native-babel-preset": "0.64.0",
-    "metro-react-native-babel-transformer": "0.64.0",
-    "prettier": "1.16.4"
-  },
   "scripts": {
-    "postinstall": "ruby ios/updatereact.rb",
-    "start": "echo \"Hello\" && react-native start",
     "android": "react-native run-android",
-    "ios": "react-native run-ios"
-  },
-  "jest": {
-    "preset": "react-native",
-    "transformIgnorePatterns": [
-      "node_modules/(?!(react-native|lottie-react-native|expo|react-native-maps|react-native-svg|react-native-branch|native-base-shoutem-theme|react-native-easy-grid|react-native-drawer|react-native-vector-icons|react-native-keyboard-aware-scroll-view|react-native-swiper|react-navigation|native-base|@expo|react-native-scrollable-tab-view|react-native-simple-modal|react-native-iphone-x-helper)/)"
-    ]
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint ."
   },
   "dependencies": {
-    "color": "1.0.3",
-    "lodash": "4.17.12",
-    "moment": "2.19.3",
-    "native-base": "2.12.2",
-    "prop-types": "^15.6.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-is": "^16.8.6",
-    "react-native": "^0.60.0",
-    "react-native-acoustic-ea-tealeaf": "12.7.0",
-    "react-native-gesture-handler": "1.10.3",
-    "react-native-maps": "0.26.1",
-    "react-native-vector-icons": "8.1.0",
-    "react-navigation": "4.4.4",
-    "scheduler": "^0.20.2",
-    "styled-components": "^5.3.0"
+    "@react-native-community/masked-view": "^0.1.11",
+    "@react-navigation/drawer": "^5.12.5",
+    "@react-navigation/native": "^5.9.4",
+    "@react-navigation/stack": "^5.14.5",
+    "native-base": "^2.15.2",
+    "react": "17.0.1",
+    "react-native": "0.63.4",
+    "react-native-acoustic-ea-tealeaf": "^12.8.0",
+    "react-native-gesture-handler": "^1.10.3",
+    "react-native-maps": "^0.28.0",
+    "react-native-reanimated": "^2.2.0",
+    "react-native-safe-area-context": "^3.2.0",
+    "react-native-screens": "^3.3.0",
+    "react-native-vector-icons": "^8.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/runtime": "^7.14.0",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "babel-jest": "^27.0.2",
+    "eslint": "^7.27.0",
+    "jest": "^27.0.4",
+    "metro-react-native-babel-preset": "^0.66.0",
+    "react-test-renderer": "17.0.1"
+  },
+  "jest": {
+    "preset": "react-native"
   }
 }

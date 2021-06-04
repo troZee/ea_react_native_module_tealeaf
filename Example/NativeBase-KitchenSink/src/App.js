@@ -1,7 +1,13 @@
 import React from "react";
 import { Root } from "native-base";
 // import { StackNavigator, DrawerNavigator } from "react-navigation";
-import { createDrawerNavigator, createStackNavigator, createAppContainer } from "react-navigation";
+// import { createDrawerNavigator, createStackNavigator, createAppContainer } from "react-navigation";
+// import { createAppContainer } from 'react-navigation';
+// import { createStackNavigator } from 'react-navigation-stack';
+// import { createDrawerNavigator } from 'react-navigation-drawer';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import Header from "./screens/Header/";
 import Header1 from "./screens/Header/1";
@@ -142,188 +148,169 @@ import ErrorPage from "./screens/error/";
 import Network from "./screens/network/";
 import Map from "./screens/map/";
 
-const Drawer = createDrawerNavigator(
-  {
-    Home: { screen: Home },
-    Anatomy: { screen: Anatomy },
-    ErrorPage: { screen: ErrorPage },
-    Network: { screen: Network },
-    Map: { screen: Map },
-    Header: { screen: Header },
-    Footer: { screen: Footer },
-    NHBadge: { screen: NHBadge },
-    NHButton: { screen: NHButton },
-    NHCard: { screen: NHCard },
-    NHCheckbox: { screen: NHCheckbox },
-    NHDeckSwiper: { screen: NHDeckSwiper },
-    NHFab: { screen: NHFab },
-    NHForm: { screen: NHForm },
-    NHIcon: { screen: NHIcon },
-    NHLayout: { screen: NHLayout },
-    NHList: { screen: NHList },
-    ListSwipe: { screen: ListSwipe },
-    NHRadio: { screen: NHRadio },
-    NHSearchbar: { screen: NHSearchbar },
-    NHSpinner: { screen: NHSpinner },
-    NHPicker: { screen: NHPicker },
-    NHTab: { screen: NHTab },
-    NHThumbnail: { screen: NHThumbnail },
-    NHTypography: { screen: NHTypography },
-    Segment: { screen: Segment },
-    NHToast: { screen: NHToast },
-    Actionsheet: { screen: Actionsheet },
-    NHAccordion: { screen: NHAccordion },
-    NHDatePicker: { screen: NHDatePicker }
-  },
-  {
-    initialRouteName: "Home",
-    contentOptions: {
-      activeTintColor: "#e91e63"
-    },
-    contentComponent: props => <SideBar {...props} />
-  }
-);
+const Drawer = createDrawerNavigator();
+function DrawerNav() {
+  return (
+    <Drawer.Navigator
+      initialRouteName = "Home"
+      drawerContentOptions={{
+        activeTintColor: "#e91e63"
+      }}
+      >
+      <Drawer.Screen name="Home" component={Home} />
+      <Drawer.Screen name="Anatomy" component={Anatomy} />
+      <Drawer.Screen name="ErrorPage" component={ErrorPage} />
+      <Drawer.Screen name="Network" component={Network} />
+      <Drawer.Screen name="Map" component={Map} />
+      <Drawer.Screen name="Header" component={Header} />
+      <Drawer.Screen name="Footer" component={Footer} />
+      <Drawer.Screen name="NHBadge" component={NHBadge} />
+      <Drawer.Screen name="NHButton" component={NHButton} />
+      <Drawer.Screen name="NHCard" component={NHCard} />
+      <Drawer.Screen name="NHCheckbox" component={NHCheckbox} />
+      <Drawer.Screen name="NHDeckSwiper" component={NHDeckSwiper} />
+      <Drawer.Screen name="NHFab" component={NHFab} />
+      <Drawer.Screen name="NHForm" component={NHForm} />
+      <Drawer.Screen name="NHIcon" component={NHIcon} />
+      <Drawer.Screen name="NHLayout" component={NHLayout} />
+      <Drawer.Screen name="NHList" component={NHList} />
+      <Drawer.Screen name="ListSwipe" component={ListSwipe} />
+      <Drawer.Screen name="NHRadio" component={NHRadio} />
+      <Drawer.Screen name="NHSearchbar" component={NHSearchbar} />
+      <Drawer.Screen name="NHSpinner" component={NHSpinner} />
+      <Drawer.Screen name="NHPicker" component={NHPicker} />
+      <Drawer.Screen name="NHTab" component={NHTab} />
+      <Drawer.Screen name="NHThumbnail" component={NHThumbnail} />
+      <Drawer.Screen name="NHTypography" component={NHTypography} />
+      <Drawer.Screen name="Segment" component={Segment} />
+      <Drawer.Screen name="NHToast" component={NHToast} />
+      <Drawer.Screen name="Actionsheet" component={Actionsheet} />
+      <Drawer.Screen name="NHAccordion" component={NHAccordion} />
+      <Drawer.Screen name="NHDatePicker" component={NHDatePicker} />
+    </Drawer.Navigator>
+  );
+}
 
-const AppNavigator = createStackNavigator(
-  {
-    Drawer: { screen: Drawer },
+// const Drawer = createDrawerNavigator(
+//     contentComponent: props => <SideBar {...props} />
+//   }
+// );
 
-    Network: { screen: Network },
-
-    ErrorPage: { screen: ErrorPage },
-
-    Map: { screen: Map },
-
-    Header1: { screen: Header1 },
-    Header2: { screen: Header2 },
-    Header3: { screen: Header3 },
-    Header4: { screen: Header4 },
-    Header5: { screen: Header5 },
-    Header6: { screen: Header6 },
-    Header7: { screen: Header7 },
-    Header8: { screen: Header8 },
-    HeaderSpan: { screen: HeaderSpan },
-    HeaderNoShadow: { screen: HeaderNoShadow },
-    HeaderNoLeft: { screen: HeaderNoLeft },
-    HeaderTransparent: { screen: HeaderTransparent },
-
-    BasicFooter: { screen: BasicFooter },
-    IconFooter: { screen: IconFooter },
-    IconText: { screen: IconText },
-    BadgeFooter: { screen: BadgeFooter },
-
-    Default: { screen: Default },
-    Outline: { screen: Outline },
-    Rounded: { screen: Rounded },
-    Block: { screen: Block },
-    Full: { screen: Full },
-    Custom: { screen: Custom },
-    Transparent: { screen: Transparent },
-    IconBtn: { screen: IconBtn },
-    Disabled: { screen: Disabled },
-
-    BasicCard: { screen: BasicCard },
-    NHCardItemBordered: { screen: NHCardItemBordered },
-    NHCardItemButton: { screen: NHCardItemButton },
-    NHCardImage: { screen: NHCardImage },
-    NHCardShowcase: { screen: NHCardShowcase },
-    NHCardList: { screen: NHCardList },
-    NHCardHeaderAndFooter: { screen: NHCardHeaderAndFooter },
-    NHCardTransparent: { screen: NHCardTransparent },
-    NHCardCustomBorderRadius: { screen: NHCardCustomBorderRadius },
-
-    SimpleDeck: { screen: SimpleDeck },
-    AdvancedDeck: { screen: AdvancedDeck },
-
-    BasicFab: { screen: BasicFab },
-    MultipleFab: { screen: MultipleFab },
-
-    FixedLabel: { screen: FixedLabel },
-    InlineLabel: { screen: InlineLabel },
-    FloatingLabel: { screen: FloatingLabel },
-    PlaceholderLabel: { screen: PlaceholderLabel },
-    StackedLabel: { screen: StackedLabel },
-    RegularInput: { screen: RegularInput },
-    UnderlineInput: { screen: UnderlineInput },
-    RoundedInput: { screen: RoundedInput },
-    IconInput: { screen: IconInput },
-    SuccessInput: { screen: SuccessInput },
-    ErrorInput: { screen: ErrorInput },
-    DisabledInput: { screen: DisabledInput },
-    PickerInput: { screen: PickerInput },
-    TextArea: { screen: TextArea },
-
-    Icons: { screen: Icons },
-    BasicIcon: { screen: BasicIcon },
-    StateIcon: { screen: StateIcon },
-    PlatformSpecificIcon: { screen: PlatformSpecificIcon },
-    IconFamily: { screen: IconFamily },
-
-    RowNB: { screen: RowNB },
-    ColumnNB: { screen: ColumnNB },
-    NestedGrid: { screen: NestedGrid },
-    CustomRow: { screen: CustomRow },
-    CustomCol: { screen: CustomCol },
-
-    NHBasicList: { screen: NHBasicList },
-    NHListItemSelected: { screen: NHListItemSelected },
-    NHListDivider: { screen: NHListDivider },
-    NHListSeparator: { screen: NHListSeparator },
-    NHListHeader: { screen: NHListHeader },
-    NHListIcon: { screen: NHListIcon },
-    NHListAvatar: { screen: NHListAvatar },
-    NHListThumbnail: { screen: NHListThumbnail },
-    NHListItemNoIndent: { screen: NHListItemNoIndent },
-
-    BasicListSwipe: { screen: BasicListSwipe },
-    SwipeRowCustomStyle: { screen: SwipeRowCustomStyle },
-    MultiListSwipe: { screen: MultiListSwipe },
-
-    RegularPicker: { screen: RegularPicker },
-    PickerWithIcon: { screen: PickerWithIcon },
-    PlaceholderPicker: { screen: PlaceholderPicker },
-    PlaceholderPickerNote: { screen: PlaceholderPickerNote },
-    BackButtonPicker: { screen: BackButtonPicker },
-    PickerTextItemText: { screen: PickerTextItemText },
-    HeaderPicker: { screen: HeaderPicker },
-    HeaderStylePicker: { screen: HeaderStylePicker },
-    CustomHeaderPicker: { screen: CustomHeaderPicker },
-    PickerWithIconStyle: { screen: PickerWithIconStyle },
-
-    NHCustomRadio: { screen: NHCustomRadio },
-    NHDefaultRadio: { screen: NHDefaultRadio },
-
-    BasicTab: { screen: BasicTab },
-    ConfigTab: { screen: ConfigTab },
-    ScrollableTab: { screen: ScrollableTab },
-
-    BasicSegment: { screen: BasicSegment },
-    AdvSegment: { screen: AdvSegment },
-    SegmentHeaderIcon: { screen: SegmentHeaderIcon },
-
-    BasicToast: { screen: BasicToast },
-    ToastDuration: { screen: ToastDuration },
-    ToastPosition: { screen: ToastPosition },
-    ToastType: { screen: ToastType },
-    ToastText: { screen: ToastText },
-    ToastButton: { screen: ToastButton },
-
-    RegularActionSheet: { screen: RegularActionSheet },
-    IconActionSheet: { screen: IconActionSheet },
-
-    AccordionDefault: { screen: AccordionDefault },
-    AccordionIcon: { screen: AccordionIcon },
-    AccordionIconStyle: { screen: AccordionIconStyle },
-    AccordionHeaderContentStyle: { screen: AccordionHeaderContentStyle },
-    AccordionCustomHeaderContent: { screen: AccordionCustomHeaderContent }
-  },
-  {
-    initialRouteName: "Drawer",
-    headerMode: "none"
-  }
-);
-
-const AppContainer = createAppContainer(AppNavigator);
+const Stack = createStackNavigator();
+function StackNav() {
+  return (
+      <Stack.Navigator initialRouteName="Drawer" headerMode="none">
+        <Stack.Screen name="Drawer" component={DrawerNav} />
+        <Stack.Screen name="ErrorPage" component={ErrorPage} />
+        <Stack.Screen name="Network" component={Network} />
+        <Stack.Screen name="Map" component={Map} />
+        <Stack.Screen name="Header1" component={Header1} />
+        <Stack.Screen name="Header2" component={Header2} />
+        <Stack.Screen name="Header3" component={Header3} />
+        <Stack.Screen name="Header4" component={Header4} />
+        <Stack.Screen name="Header5" component={Header5} />
+        <Stack.Screen name="Header6" component={Header6} />
+        <Stack.Screen name="Header7" component={Header7} />
+        <Stack.Screen name="Header8" component={Header8} />
+        <Stack.Screen name="HeaderSpan" component={HeaderSpan} />
+        <Stack.Screen name="HeaderNoShadow" component={HeaderNoShadow} />
+        <Stack.Screen name="HeaderNoLeft" component={HeaderNoLeft} />
+        <Stack.Screen name="HeaderTransparent" component={HeaderTransparent} />
+        <Stack.Screen name="BasicFooter" component={BasicFooter} />
+        <Stack.Screen name="IconFooter" component={IconFooter} />
+        <Stack.Screen name="IconText" component={IconText} />
+        <Stack.Screen name="BadgeFooter" component={BadgeFooter} />
+        <Stack.Screen name="Default" component={Default} />
+        <Stack.Screen name="Outline" component={Outline} />
+        <Stack.Screen name="Rounded" component={Rounded} />
+        <Stack.Screen name="Block" component={Block} />
+        <Stack.Screen name="Full" component={Full} />
+        <Stack.Screen name="Custom" component={Custom} />
+        <Stack.Screen name="Transparent" component={Transparent} />
+        <Stack.Screen name="IconBtn" component={IconBtn} />
+        <Stack.Screen name="Disabled" component={Disabled} />
+        <Stack.Screen name="BasicCard" component={BasicCard} />
+        <Stack.Screen name="NHCardItemBordered" component={NHCardItemBordered} />
+        <Stack.Screen name="NHCardItemButton" component={NHCardItemButton} />
+        <Stack.Screen name="NHCardImage" component={NHCardImage} />
+        <Stack.Screen name="NHCardShowcase" component={NHCardShowcase} />
+        <Stack.Screen name="NHCardList" component={NHCardList} />
+        <Stack.Screen name="NHCardHeaderAndFooter" component={NHCardHeaderAndFooter} />
+        <Stack.Screen name="NHCardTransparent" component={NHCardTransparent} />
+        <Stack.Screen name="NHCardCustomBorderRadius" component={NHCardCustomBorderRadius} />
+        <Stack.Screen name="SimpleDeck" component={SimpleDeck} />
+        <Stack.Screen name="AdvancedDeck" component={AdvancedDeck} />
+        <Stack.Screen name="BasicFab" component={BasicFab} />
+        <Stack.Screen name="MultipleFab" component={MultipleFab} />
+        <Stack.Screen name="FixedLabel" component={FixedLabel} />
+        <Stack.Screen name="InlineLabel" component={InlineLabel} />
+        <Stack.Screen name="FloatingLabel" component={FloatingLabel} />
+        <Stack.Screen name="PlaceholderLabel" component={PlaceholderLabel} />
+        <Stack.Screen name="StackedLabel" component={StackedLabel} />
+        <Stack.Screen name="RegularInput" component={RegularInput} />
+        <Stack.Screen name="UnderlineInput" component={UnderlineInput} />
+        <Stack.Screen name="RoundedInput" component={RoundedInput} />
+        <Stack.Screen name="IconInput" component={IconInput} />
+        <Stack.Screen name="SuccessInput" component={SuccessInput} />
+        <Stack.Screen name="ErrorInput" component={ErrorInput} />
+        <Stack.Screen name="DisabledInput" component={DisabledInput} />
+        <Stack.Screen name="PickerInput" component={PickerInput} />
+        <Stack.Screen name="TextArea" component={TextArea} />
+        <Stack.Screen name="Icons" component={Icons} />
+        <Stack.Screen name="BasicIcon" component={BasicIcon} />
+        <Stack.Screen name="StateIcon" component={StateIcon} />
+        <Stack.Screen name="PlatformSpecificIcon" component={PlatformSpecificIcon} />
+        <Stack.Screen name="IconFamily" component={IconFamily} />
+        <Stack.Screen name="RowNB" component={RowNB} />
+        <Stack.Screen name="ColumnNB" component={ColumnNB} />
+        <Stack.Screen name="NestedGrid" component={NestedGrid} />
+        <Stack.Screen name="CustomRow" component={CustomRow} />
+        <Stack.Screen name="CustomCol" component={CustomCol} />
+        <Stack.Screen name="NHBasicList" component={NHBasicList} />
+        <Stack.Screen name="NHListItemSelected" component={NHListItemSelected} />
+        <Stack.Screen name="NHListDivider" component={NHListDivider} />
+        <Stack.Screen name="NHListSeparator" component={NHListSeparator} />
+        <Stack.Screen name="NHListHeader" component={NHListHeader} />
+        <Stack.Screen name="NHListIcon" component={NHListIcon} />
+        <Stack.Screen name="NHListAvatar" component={NHListAvatar} />
+        <Stack.Screen name="NHListThumbnail" component={NHListThumbnail} />
+        <Stack.Screen name="NHListItemNoIndent" component={NHListItemNoIndent} />
+        <Stack.Screen name="BasicListSwipe" component={BasicListSwipe} />
+        <Stack.Screen name="SwipeRowCustomStyle" component={SwipeRowCustomStyle} />
+        <Stack.Screen name="MultiListSwipe" component={MultiListSwipe} />
+        <Stack.Screen name="RegularPicker" component={RegularPicker} />
+        <Stack.Screen name="PickerWithIcon" component={PickerWithIcon} />
+        <Stack.Screen name="PlaceholderPicker" component={PlaceholderPicker} />
+        <Stack.Screen name="PlaceholderPickerNote" component={PlaceholderPickerNote} />
+        <Stack.Screen name="BackButtonPicker" component={BackButtonPicker} />
+        <Stack.Screen name="PickerTextItemText" component={PickerTextItemText} />
+        <Stack.Screen name="HeaderStylePicker" component={HeaderStylePicker} />
+        <Stack.Screen name="CustomHeaderPicker" component={CustomHeaderPicker} />
+        <Stack.Screen name="PickerWithIconStyle" component={PickerWithIconStyle} />
+        <Stack.Screen name="NHCustomRadio" component={NHCustomRadio} />
+        <Stack.Screen name="NHDefaultRadio" component={NHDefaultRadio} />
+        <Stack.Screen name="BasicTab" component={BasicTab} />
+        <Stack.Screen name="ConfigTab" component={ConfigTab} />
+        <Stack.Screen name="ScrollableTab" component={ScrollableTab} />
+        <Stack.Screen name="BasicSegment" component={BasicSegment} />
+        <Stack.Screen name="AdvSegment" component={AdvSegment} />
+        <Stack.Screen name="SegmentHeaderIcon" component={SegmentHeaderIcon} />
+        <Stack.Screen name="BasicToast" component={BasicToast} />
+        <Stack.Screen name="ToastDuration" component={ToastDuration} />
+        <Stack.Screen name="ToastPosition" component={ToastPosition} />
+        <Stack.Screen name="ToastType" component={ToastType} />
+        <Stack.Screen name="ToastText" component={ToastText} />
+        <Stack.Screen name="ToastButton" component={ToastButton} />
+        <Stack.Screen name="RegularActionSheet" component={RegularActionSheet} />
+        <Stack.Screen name="IconActionSheet" component={IconActionSheet} />
+        <Stack.Screen name="AccordionDefault" component={AccordionDefault} />
+        <Stack.Screen name="AccordionIcon" component={AccordionIcon} />
+        <Stack.Screen name="AccordionIconStyle" component={AccordionIconStyle} />
+        <Stack.Screen name="AccordionHeaderContentStyle" component={AccordionHeaderContentStyle} />
+        <Stack.Screen name="AccordionCustomHeaderContent" component={AccordionCustomHeaderContent} />
+      </Stack.Navigator>
+  );
+}
 
 import {NativeModules, findNodeHandle} from 'react-native';
 const Tealeaf = NativeModules.RNCxa;
@@ -348,17 +335,19 @@ function getCurrentRouteName(navigationState) {
 
 export default () =>
   <Root>
-    <AppContainer 
-        onNavigationStateChange={(prevState, currentState) => {
+    <NavigationContainer onNavigationStateChange={(prevState, currentState) => {
             currentScreen = getCurrentRouteName(currentState);
             prevScreen = getCurrentRouteName(prevState);
 
             if (prevScreen !== currentScreen) {
                 // the line below uses the Google Analytics tracker
                 // change the tracker here to use other Mobile analytics SDK.
-                // console.log("currentScreen:",currentScreen);
+                console.log("currentScreen:",currentScreen);
                 TLTRN.currentScreen = currentScreen;
             }
-        }}
-    />
+        }}>
+      <StackNav/>
+    </NavigationContainer>
   </Root>;
+
+
