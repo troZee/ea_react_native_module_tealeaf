@@ -3,7 +3,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-target 'NativeBase_KitchenSink' do
+target 'NativebaseKitchenSink' do
   config = use_native_modules!
 
   use_react_native!(
@@ -12,7 +12,7 @@ target 'NativeBase_KitchenSink' do
     :hermes_enabled => false
   )
 
-  target 'NativeBase_KitchenSinkTests' do
+  target 'NativebaseKitchenSinkTests' do
     inherit! :complete
     # Pods for testing
   end

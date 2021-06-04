@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "NativeBase_KitchenSink.app"
-               BlueprintName = "NativeBase_KitchenSink"
-               ReferencedContainer = "container:NativeBase_KitchenSink.xcodeproj">
+               BuildableName = "NativebaseKitchenSink.app"
+               BlueprintName = "NativebaseKitchenSink"
+               ReferencedContainer = "container:NativebaseKitchenSink.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "NativeBase_KitchenSinkTests.xctest"
-               BlueprintName = "NativeBase_KitchenSinkTests"
-               ReferencedContainer = "container:NativeBase_KitchenSink.xcodeproj">
+               BuildableName = "NativebaseKitchenSinkTests.xctest"
+               BlueprintName = "NativebaseKitchenSinkTests"
+               ReferencedContainer = "container:NativebaseKitchenSink.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "NativeBase_KitchenSink.app"
-            BlueprintName = "NativeBase_KitchenSink"
-            ReferencedContainer = "container:NativeBase_KitchenSink.xcodeproj">
+            BuildableName = "NativebaseKitchenSink.app"
+            BlueprintName = "NativebaseKitchenSink"
+            ReferencedContainer = "container:NativebaseKitchenSink.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "NativeBase_KitchenSink.app"
-            BlueprintName = "NativeBase_KitchenSink"
-            ReferencedContainer = "container:NativeBase_KitchenSink.xcodeproj">
+            BuildableName = "NativebaseKitchenSink.app"
+            BlueprintName = "NativebaseKitchenSink"
+            ReferencedContainer = "container:NativebaseKitchenSink.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
