@@ -312,43 +312,52 @@ function StackNav() {
   );
 }
 
-import {NativeModules, findNodeHandle} from 'react-native';
+import {NativeModules, findNodeHandle, Platform} from 'react-native';
 const Tealeaf = NativeModules.RNCxa;
 import {TLTRN} from "../node_modules/react-native-acoustic-ea-tealeaf/lib/TLTRN";
+import { useRef } from 'react';
 
 let currentScreen = "Home";
 let prevScreen = null;
-// Review code and performance
-// TLTRN.init(currentScreen, 1);
+// Turn off for now due to performance - added logic in NavigationContainer instead
+// TLTRN.init(currentScreen, 0);
 
-// gets the current screen from navigation state
-function getCurrentRouteName(navigationState) {
-  if (!navigationState) {
-    return null;
-  }
-  const route = navigationState.routes[navigationState.index];
-  // dive into nested navigators
-  if (route.routes) {
-    return getCurrentRouteName(route);
-  }
-  return route.routeName;
-}
+export default () => {
+  const navigationRef = useRef();
+  const routeNameRef = useRef();
 
-export default () =>
-  <Root>
-    <NavigationContainer onNavigationStateChange={(prevState, currentState) => {
-            currentScreen = getCurrentRouteName(currentState);
-            prevScreen = getCurrentRouteName(prevState);
+  return (
+    <Root>
+      <NavigationContainer
+        ref={navigationRef}
+        onReady={() =>
+          (routeNameRef.current = navigationRef.current.getCurrentRoute().name)
+        }
+        onStateChange={async () => {
+          const previousRouteName = routeNameRef.current;
+          const currentRouteName = navigationRef.current.getCurrentRoute().name;
 
-            if (prevScreen !== currentScreen) {
-                // the line below uses the Google Analytics tracker
-                // change the tracker here to use other Mobile analytics SDK.
-                console.log("currentScreen:",currentScreen);
-                TLTRN.currentScreen = currentScreen;
+          if (previousRouteName !== currentRouteName) {
+            // The line below uses the expo-firebase-analytics tracker
+            // https://docs.expo.io/versions/latest/sdk/firebase-analytics/
+            // Change this line to use another Mobile analytics SDK
+            console.log("currentScreen:", currentRouteName);
+            // set page name
+            TLTRN.currentScreen = currentRouteName;
+            // screen capture page
+            if (Platform.OS === 'ios' || Platform.OS === 'android') {
+              await Tealeaf.logScreenLayout(currentRouteName);
             }
-        }}>
-      <StackNav/>
-    </NavigationContainer>
-  </Root>;
+          }
+
+          // Save the current route name for later comparison
+          routeNameRef.current = currentRouteName;
+        }}
+      >
+        <StackNav/>
+      </NavigationContainer>
+    </Root>
+  );
+};
 
 
