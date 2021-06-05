@@ -2,18 +2,19 @@
 
 buildscript {
     ext {
-        buildToolsVersion = "29.0.3"
-        minSdkVersion = 21
-        compileSdkVersion = 29
-        targetSdkVersion = 29
-        ndkVersion = "20.1.5948944"
+        buildToolsVersion = "30.0.0"
+        minSdkVersion = 16
+        compileSdkVersion = 30
+        targetSdkVersion = 30
+        supportLibVersion = "28.0.0"
     }
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:4.1.0")
+        classpath 'com.android.tools.build:gradle:4.0.0'
+
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -22,17 +23,51 @@ buildscript {
 allprojects {
     repositories {
         mavenLocal()
-        maven {
-            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
-            url("$rootDir/../node_modules/react-native/android")
-        }
-        maven {
-            // Android JSC is installed from npm
-            url("$rootDir/../node_modules/jsc-android/dist")
-        }
-
         google()
         jcenter()
-        maven { url 'https://www.jitpack.io' }
+        maven {
+            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+            url "$rootDir/../node_modules/react-native/android"
+        }
+        maven {
+            url "$rootDir/../node_modules/jsc-android/dist"
+        }
+        maven {
+            // All of Tealeaf SDK libraries
+            url "https://raw.githubusercontent.com/acoustic-analytics/Android_Maven/beta"
+        }
+    }
+
+    // This block encapsulates custom properties and makes them available to all
+    project.ext {
+//        // The following are only a few examples of the types of properties you can define.
+//        // Sdk and tools
+//        minSdkVersion = 16
+//        targetSdkVersion = 30
+//        compileSdkVersion = 30
+//        buildToolsVersion = '30.0.0'
+//
+//        androidxLibVersion = '1.1.0'
+//        androidxMaterialLibVersion = '1.0.0-rc01'
+//        androidxTestLibVersion = '1.1.0'
+//
+//        androidxLibBrowserVersion = '1.2.0'
+//        androidxLegacyLibVersion = '1.0.0'
+//
+//        supportLibVersion = '28.0.0'
+//        googlePlayServicesVersion = '16.0.0'
+//        xwalkCoreVersion = '23.53.589.4'
+//
+//        guavaVersion = '18.0'
+//        glideVersion = '3.6.1'
+//        junitVersion = '4.12'
+//        mockitoVersion = '1.10.19'
+//        powerMockito = '1.6.2'
+//        hamcrestVersion = '1.3'
+//        runnerVersion = '1.0.2'
+//        rulesVersion = '1.0.2'
+//        espressoVersion = '3.2.0'
+
+        multidexVersion = '2.0.1'
     }
 }
