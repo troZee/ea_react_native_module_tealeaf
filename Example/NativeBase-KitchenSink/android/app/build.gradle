@@ -179,14 +179,6 @@ dependencies {
     debugImplementation 'com.facebook.flipper:flipper:0.92.0'
     debugImplementation 'com.facebook.soloader:soloader:0.10.1'
 
-    implementation project(path: ':react-native-vector-icons')
-    implementation project(path: ':react-native-gesture-handler')
-    implementation project(path: ':react-native-reanimated')
-    implementation project(path: ':react-native-screens')
-    implementation project(path: ':react-native-safe-area-context')
-
-    api project(path: ':react-native-acoustic-ea-tealeaf')
-
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";
         debugImplementation files(hermesPath + "hermes-debug.aar")
@@ -215,4 +207,4 @@ task copyDownloadableDepsToLibs(type: Copy) {
     into 'libs'
 }
 
-//apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)

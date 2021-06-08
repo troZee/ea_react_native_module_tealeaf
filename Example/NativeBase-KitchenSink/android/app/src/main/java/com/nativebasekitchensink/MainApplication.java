@@ -3,21 +3,16 @@ package com.nativebasekitchensink;
 import android.app.Application;
 import android.content.Context;
 
+import androidx.annotation.Nullable;
+
+import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
-import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
-import com.oblador.vectoricons.VectorIconsPackage;
-import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
-import com.swmansion.reanimated.ReanimatedPackage;
-import com.swmansion.rnscreens.RNScreensPackage;
-import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
-import com.tl.uic.rncxa.RNCxaPackage;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.Arrays;
 import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
@@ -30,20 +25,25 @@ public class MainApplication extends Application implements ReactApplication {
 
         @Override
         protected List<ReactPackage> getPackages() {
-            return Arrays.<ReactPackage>asList(
-                    new MainReactPackage(),
-                    new RNCxaPackage(),
-                    new VectorIconsPackage(),
-                    new RNGestureHandlerPackage(),
-                    new ReanimatedPackage(),
-                    new RNScreensPackage(),
-                    new SafeAreaContextPackage()
-            );
+            return new PackageList(this).getPackages();
         }
 
         @Override
         protected String getJSMainModuleName() {
             return "index";
+        }
+
+        @Override
+        protected @Nullable
+        String getJSBundleFile() {
+            if (BuildConfig.DEBUG) {
+                return super.getJSBundleFile();
+            }
+            else {
+                // For EXPO
+//              return UpdatesController.getInstance().getLaunchAssetFile();
+                return null;
+            }
         }
     };
 
@@ -58,6 +58,7 @@ public class MainApplication extends Application implements ReactApplication {
         SoLoader.init(this, /* native exopackage */ false);
 
 //        if (!BuildConfig.DEBUG) {
+        // For EXPO
 //            UpdatesController.initialize(this);
 //        }
 
