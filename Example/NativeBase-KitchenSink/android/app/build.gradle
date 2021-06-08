@@ -172,22 +172,20 @@ dependencies {
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation "com.facebook.react:react-native:+"  // From node_module
     implementation 'com.android.support:multidex:' + project.ext.multidexVersion
-    implementation 'com.facebook.flipper:flipper-leakcanary2-plugin:0.80.0'
+//    implementation 'com.facebook.flipper:flipper-leakcanary2-plugin:0.80.0'
 
     debugImplementation 'com.facebook.flipper:flipper-fresco-plugin:0.30.1'
     debugImplementation 'com.facebook.flipper:flipper-network-plugin:0.92.0'
     debugImplementation 'com.facebook.flipper:flipper:0.92.0'
+    debugImplementation 'com.facebook.soloader:soloader:0.10.1'
 
-//    debugImplementation("com.facebook.flipper:flipper:0.92.0") {
-//        exclude group:'com.facebook.yoga'
-//        exclude group:'com.facebook.fbjni', module: 'fbjni'
-//        exclude group:'com.facebook.litho', module: 'litho-annotations'
-//    }
+    implementation project(path: ':react-native-vector-icons')
+    implementation project(path: ':react-native-gesture-handler')
+    implementation project(path: ':react-native-reanimated')
+    implementation project(path: ':react-native-screens')
+    implementation project(path: ':react-native-safe-area-context')
 
-//    debugImplementation 'com.facebook.soloader:soloader:0.10.1'
-//    implementation project(path: ':react-native-vector-icons')
-//    api project(path: ':react-native-acoustic-ea-tealeaf')
-//    implementation project(path: ':react-native-gesture-handler')
+    api project(path: ':react-native-acoustic-ea-tealeaf')
 
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";
@@ -217,4 +215,4 @@ task copyDownloadableDepsToLibs(type: Copy) {
     into 'libs'
 }
 
-apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+//apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)

@@ -1,6 +1,24 @@
 rootProject.name = 'NativebaseKitchenSink'
 
-apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle");
-applyNativeModulesSettingsGradle(settings)
+//apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle");
+//applyNativeModulesSettingsGradle(settings)
+
+include ':react-native-acoustic-ea-tealeaf'
+project(':react-native-acoustic-ea-tealeaf').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-acoustic-ea-tealeaf/android')
+include ':react-native-vector-icons'
+project(':react-native-vector-icons').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-vector-icons/android')
+include ':react-native-gesture-handler'
+project(':react-native-gesture-handler').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-gesture-handler/android')
+include ':react-native-reanimated'
+project(':react-native-reanimated').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-reanimated/android')
+include ':react-native-screens'
+project(':react-native-screens').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-screens/android')
+
+include ':react-native-safe-area-context'
+project(':react-native-safe-area-context').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-safe-area-context/android')
+
+//include ':react-native-safe-area-provider'
+//project(':react-native-safe-area-provider').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-safe-area-provider/android')
+
 
 include ':app'

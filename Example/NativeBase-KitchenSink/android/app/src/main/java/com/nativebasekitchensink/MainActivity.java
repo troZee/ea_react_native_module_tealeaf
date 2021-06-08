@@ -1,6 +1,9 @@
 package com.nativebasekitchensink;
 
+import android.view.MotionEvent;
+
 import com.facebook.react.ReactActivity;
+import com.tl.uic.Tealeaf;
 
 public class MainActivity extends ReactActivity {
 
@@ -11,5 +14,10 @@ public class MainActivity extends ReactActivity {
   @Override
   protected String getMainComponentName() {
     return "NativebaseKitchenSink";
+  }
+
+  public boolean dispatchTouchEvent(MotionEvent e) {
+    Tealeaf.dispatchTouchEvent(this, e);
+    return super.dispatchTouchEvent(e);
   }
 }
