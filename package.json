@@ -25,9 +25,9 @@
   "license": "See license in https://github.com/acoustic-analytics/ea_react_native_module_tealeaf/tree/master/Licenses/License",
   "homepage": "https://github.com/acoustic-analytics/ea_react_native_module_tealeaf",
   "peerDependencies": {
-    "react-native": "^0.63"
+    "react-native": "*"
   },
-  "dependencies": {
+  "devDependencies": {
     "react-native": "^0.63"
   }
 }
